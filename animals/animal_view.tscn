@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6os07eenikhl"]
+[gd_scene load_steps=7 format=3 uid="uid://c6os07eenikhl"]
 
 [ext_resource type="Texture2D" uid="uid://c8g708mbdn8nh" path="res://art/clipboard.png" id="1_hvpvx"]
 [ext_resource type="Script" path="res://animals/animal_view.gd" id="1_o2tut"]
 [ext_resource type="PackedScene" uid="uid://cogpvrquq1h7e" path="res://animals/animal.tscn" id="2_qt6aq"]
+[ext_resource type="PackedScene" uid="uid://17ali6nd4rgr" path="res://hud.tscn" id="4_3586e"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lbp87"]
 font_color = Color(0, 0, 0, 1)
@@ -130,6 +131,8 @@ text = "Approve Adoption"
 
 [node name="animal" parent="." instance=ExtResource("2_qt6aq")]
 position = Vector2(1368, 544)
+
+[node name="HUD" parent="." instance=ExtResource("4_3586e")]
 
 [connection signal="pressed" from="Feed" to="." method="_on_feed_pressed"]
 [connection signal="pressed" from="Water" to="." method="_on_water_pressed"]

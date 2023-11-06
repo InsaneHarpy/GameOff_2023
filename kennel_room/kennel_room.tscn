@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://0fqkfxva5a8d"]
+[gd_scene load_steps=4 format=3 uid="uid://0fqkfxva5a8d"]
 
 [ext_resource type="Script" path="res://kennel_room/kennel_room.gd" id="1_8tavh"]
 [ext_resource type="PackedScene" uid="uid://br2netp27nhyg" path="res://kennel_room/kennel.tscn" id="1_ywjtv"]
+[ext_resource type="PackedScene" uid="uid://17ali6nd4rgr" path="res://hud.tscn" id="3_r4qfv"]
 
 [node name="kennel_room" type="Node2D"]
 script = ExtResource("1_8tavh")
@@ -62,3 +63,6 @@ health = 100
 thirst = 100
 hunger = 100
 happiness = 100
+
+[node name="HUD" parent="." instance=ExtResource("3_r4qfv")]
+metadata/_edit_lock_ = true

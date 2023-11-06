@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://17ali6nd4rgr"]
+
+[ext_resource type="Script" path="res://hud.gd" id="1_1op7w"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1lr4o"]
+font_size = 40
+
+[node name="HUD" type="CanvasGroup"]
+script = ExtResource("1_1op7w")
+
+[node name="Energy Bar" type="Label" parent="."]
+offset_left = 813.0
+offset_top = 862.0
+offset_right = 1115.0
+offset_bottom = 920.0
+text = "Energy: 50 / 100"
+label_settings = SubResource("LabelSettings_1lr4o")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Monies" type="Label" parent="."]
+offset_left = 813.0
+offset_top = 956.0
+offset_right = 1115.0
+offset_bottom = 1014.0
+text = "Money: $$$"
+label_settings = SubResource("LabelSettings_1lr4o")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Available Animals" type="Button" parent="."]
+offset_left = 43.0
+offset_top = 925.0
+offset_right = 315.0
+offset_bottom = 1044.0
+text = "Available Animals"
+
+[node name="Next Day" type="Button" parent="."]
+offset_left = 1605.0
+offset_top = 925.0
+offset_right = 1877.0
+offset_bottom = 1044.0
+text = "Next Day"
