@@ -121,9 +121,17 @@ offset_right = 448.0
 offset_bottom = 768.0
 text = "Play!"
 
+[node name="Adpot" type="Button" parent="."]
+offset_left = 176.0
+offset_top = 864.0
+offset_right = 592.0
+offset_bottom = 928.0
+text = "Approve Adoption"
+
 [node name="animal" parent="." instance=ExtResource("2_qt6aq")]
 position = Vector2(1368, 544)
 
 [connection signal="pressed" from="Feed" to="." method="_on_feed_pressed"]
 [connection signal="pressed" from="Water" to="." method="_on_water_pressed"]
 [connection signal="pressed" from="Play with pet" to="." method="_on_play_with_pet_pressed"]
+[connection signal="pressed" from="Adpot" to="." method="_on_play_with_pet_pressed"]

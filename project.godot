@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Papa's Adoptoria"
-run/main_scene="res://main_screen/main.tscn"
+config/name="Scales, Tails, & Whiskers"
+run/main_scene="res://main_menu_screen/main_menu.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
 config/icon="res://icon.svg"
 

@@ -149,18 +149,19 @@ func _process(delta):
 	'''
 	Called every frame. 'delta' is the elapsed time since the previous frame.
 	'''
+	pass
 	# decrease/increase properties here
-	self.time_passed += delta
-	self.time_lastplayedwith += delta
-	if self.time_passed >= self.update_inc:
-		self.time_passed = 0
-		self.update_pet_values()
-		if self.health != 0:
-			self.age += 1	
-		print("Stats updated for " + str(self.animalName) + " the " + str(self.type))
-		print("Adoptability: " + str(self.adoptability))
-		print("Health: " + str(self.health))
-		print("Thirst: " + str(self.thirst))
-		print("Hunger: " + str(self.hunger))
-		print("Happiness: " + str(self.happiness))
-		print("Age: " + str(self.age))
+#	self.time_passed += delta
+#	self.time_lastplayedwith += delta
+#	if self.time_passed >= self.update_inc:
+#		self.time_passed = 0
+#		self.update_pet_values()
+#		if self.health != 0:
+#			self.age += 1	
+#		print("Stats updated for " + str(self.animalName) + " the " + str(self.type))
+#		print("Adoptability: " + str(self.adoptability))
+#		print("Health: " + str(self.health))
+#		print("Thirst: " + str(self.thirst))
+#		print("Hunger: " + str(self.hunger))
+#		print("Happiness: " + str(self.happiness))
+#		print("Age: " + str(self.age))
