@@ -29,6 +29,12 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="Papa's Adoptoria"
 
+
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
+
 [input]
 
 mouse_click={
