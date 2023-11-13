@@ -41,3 +41,6 @@ offset_top = 925.0
 offset_right = 1877.0
 offset_bottom = 1044.0
 text = "Next Day"
+
+[connection signal="pressed" from="Available Animals" to="." method="_on_available_animals_pressed"]
+[connection signal="pressed" from="Next Day" to="." method="_on_next_day_pressed"]
