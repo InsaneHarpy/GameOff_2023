@@ -1,0 +1,140 @@
+[gd_scene load_steps=7 format=3 uid="uid://c6os07eenikhl"]
+
+[ext_resource type="Texture2D" uid="uid://c8g708mbdn8nh" path="res://art/clipboard.png" id="1_hvpvx"]
+[ext_resource type="Script" path="res://animals/animal_view.gd" id="1_o2tut"]
+[ext_resource type="PackedScene" uid="uid://cogpvrquq1h7e" path="res://animals/animal.tscn" id="2_qt6aq"]
+[ext_resource type="PackedScene" uid="uid://17ali6nd4rgr" path="res://hud.tscn" id="4_3586e"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lbp87"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_csxle"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="Animal View" type="Node2D"]
+script = ExtResource("1_o2tut")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(368, 544)
+texture = ExtResource("1_hvpvx")
+metadata/_edit_lock_ = true
+
+[node name="KennelNo" type="Label" parent="."]
+offset_left = 152.0
+offset_top = 208.0
+offset_right = 376.0
+offset_bottom = 239.0
+text = "Kennel Number: "
+label_settings = SubResource("LabelSettings_lbp87")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="animalName" type="Label" parent="."]
+offset_left = 192.0
+offset_top = 256.0
+offset_right = 416.0
+offset_bottom = 287.0
+text = "Name: -"
+label_settings = SubResource("LabelSettings_csxle")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="animalType" type="Label" parent="."]
+offset_left = 192.0
+offset_top = 288.0
+offset_right = 416.0
+offset_bottom = 319.0
+text = "Type: -"
+label_settings = SubResource("LabelSettings_lbp87")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="animalAdoptability" type="Label" parent="."]
+offset_left = 224.0
+offset_top = 352.0
+offset_right = 448.0
+offset_bottom = 383.0
+text = "Adoptibility: 10 / 100"
+label_settings = SubResource("LabelSettings_lbp87")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="animalHealth" type="Label" parent="."]
+offset_left = 224.0
+offset_top = 384.0
+offset_right = 448.0
+offset_bottom = 415.0
+text = "Health: 50 / 100"
+label_settings = SubResource("LabelSettings_lbp87")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="animalThirst" type="Label" parent="."]
+offset_left = 224.0
+offset_top = 416.0
+offset_right = 448.0
+offset_bottom = 447.0
+text = "Thirst: 50 / 100"
+label_settings = SubResource("LabelSettings_lbp87")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="animalHunger" type="Label" parent="."]
+offset_left = 224.0
+offset_top = 448.0
+offset_right = 448.0
+offset_bottom = 479.0
+text = "Hunger: 50 / 100"
+label_settings = SubResource("LabelSettings_lbp87")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="animalHappiness" type="Label" parent="."]
+offset_left = 224.0
+offset_top = 480.0
+offset_right = 448.0
+offset_bottom = 511.0
+text = "Happiness: 50 / 100"
+label_settings = SubResource("LabelSettings_lbp87")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Feed" type="Button" parent="."]
+offset_left = 200.0
+offset_top = 640.0
+offset_right = 352.0
+offset_bottom = 680.0
+text = "Feed"
+metadata/_edit_lock_ = true
+
+[node name="Water" type="Button" parent="."]
+offset_left = 400.0
+offset_top = 640.0
+offset_right = 552.0
+offset_bottom = 680.0
+text = "Water"
+
+[node name="Play with pet" type="Button" parent="."]
+offset_left = 296.0
+offset_top = 728.0
+offset_right = 448.0
+offset_bottom = 768.0
+text = "Play!"
+
+[node name="Adpot" type="Button" parent="."]
+offset_left = 176.0
+offset_top = 864.0
+offset_right = 592.0
+offset_bottom = 928.0
+text = "Approve Adoption"
+
+[node name="animal" parent="." instance=ExtResource("2_qt6aq")]
+position = Vector2(1368, 544)
+
+[node name="HUD" parent="." instance=ExtResource("4_3586e")]
+
+[connection signal="pressed" from="Feed" to="." method="_on_feed_pressed"]
+[connection signal="pressed" from="Water" to="." method="_on_water_pressed"]
+[connection signal="pressed" from="Play with pet" to="." method="_on_play_with_pet_pressed"]
+[connection signal="pressed" from="Adpot" to="." method="_on_play_with_pet_pressed"]
