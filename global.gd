@@ -12,7 +12,7 @@ var active_animal = {'name': '',
 					'happiness': 0}
 
 var current_animals = {1: {'name': 'Spyro',
-						   'type': 'dragon',
+						   'type': 'Dragon',
 						   'adoptability': 75,
 						   'health': 25,
 						   'thirst': 10,
