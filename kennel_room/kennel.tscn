@@ -1,11 +1,53 @@
-[gd_scene load_steps=4 format=3 uid="uid://br2netp27nhyg"]
+[gd_scene load_steps=11 format=3 uid="uid://br2netp27nhyg"]
 
 [ext_resource type="Script" path="res://kennel_room/kennel.gd" id="1_epng7"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_hn0jd"]
+[ext_resource type="Texture2D" uid="uid://g7bxads8v0nu" path="res://art-assets/kennel-screen/Kennel.png" id="2_7iisi"]
+[ext_resource type="Texture2D" uid="uid://cktf71ov352u1" path="res://art-assets/pet-sprites/BlueDragon-sprite.png" id="3_i76gl"]
+[ext_resource type="Texture2D" uid="uid://dldtojjop2ois" path="res://art-assets/pet-sprites/Fox-sprite.png" id="4_bgns6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_88wnf"]
-size = Vector2(575, 381)
+size = Vector2(11.8767, 11.7858)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ui831"]
+atlas = ExtResource("3_i76gl")
+region = Rect2(0, 0, 45, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fh6su"]
+atlas = ExtResource("3_i76gl")
+region = Rect2(45, 0, 45, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntkkf"]
+atlas = ExtResource("4_bgns6")
+region = Rect2(0, 0, 45, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awpeh"]
+atlas = ExtResource("4_bgns6")
+region = Rect2(45, 0, 45, 45)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y5hxk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ui831")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fh6su")
+}],
+"loop": true,
+"name": &"blue dragon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ntkkf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awpeh")
+}],
+"loop": true,
+"name": &"fox",
+"speed": 5.0
+}]
 
 [node name="Kennel" type="Area2D"]
 position = Vector2(0, 1)
@@ -13,69 +55,86 @@ script = ExtResource("1_epng7")
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(287.75, 190.25)
-scale = Vector2(576.5, 381.5)
-texture = SubResource("PlaceholderTexture2D_hn0jd")
+[node name="kennel" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("2_7iisi")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(288.5, 190.5)
+visible = false
+position = Vector2(1.50996e-07, -1)
+rotation = -3.14159
+scale = Vector2(20.2077, -19.0059)
 shape = SubResource("RectangleShape2D_88wnf")
 metadata/_edit_lock_ = true
 
 [node name="KennelNo" type="Label" parent="."]
-offset_left = 8.0
-offset_top = 7.0
-offset_right = 232.0
-offset_bottom = 38.0
+visible = false
+offset_left = -112.0
+offset_top = -105.0
+offset_right = 112.0
+offset_bottom = -74.0
 text = "Kennel Number: "
 
 [node name="animalName" type="Label" parent="."]
-offset_left = 192.0
-offset_top = 79.0
-offset_right = 416.0
-offset_bottom = 110.0
+visible = false
+offset_left = -88.0
+offset_top = -81.0
+offset_right = 136.0
+offset_bottom = -50.0
 text = "Name: -"
 
 [node name="animalType" type="Label" parent="."]
-offset_left = 192.0
-offset_top = 111.0
-offset_right = 416.0
-offset_bottom = 142.0
+visible = false
+offset_left = -104.0
+offset_top = -97.0
+offset_right = 120.0
+offset_bottom = -66.0
 text = "Type: -"
 
 [node name="animalAdoptability" type="Label" parent="."]
-offset_left = 192.0
-offset_top = 143.0
-offset_right = 416.0
-offset_bottom = 174.0
+visible = false
+offset_left = -88.0
+offset_top = -17.0
+offset_right = 136.0
+offset_bottom = 14.0
 text = "Adoptibility: 10 / 100"
 
 [node name="animalHealth" type="Label" parent="."]
-offset_left = 192.0
-offset_top = 175.0
-offset_right = 416.0
-offset_bottom = 206.0
+visible = false
+offset_left = -88.0
+offset_top = 15.0
+offset_right = 136.0
+offset_bottom = 46.0
 text = "Health: 50 / 100"
 
 [node name="animalThirst" type="Label" parent="."]
-offset_left = 192.0
-offset_top = 207.0
-offset_right = 416.0
-offset_bottom = 238.0
+visible = false
+offset_left = -88.0
+offset_top = 47.0
+offset_right = 136.0
+offset_bottom = 78.0
 text = "Thirst: 50 / 100"
 
 [node name="animalHunger" type="Label" parent="."]
-offset_left = 192.0
-offset_top = 239.0
-offset_right = 416.0
-offset_bottom = 270.0
+visible = false
+offset_left = -88.0
+offset_top = 79.0
+offset_right = 136.0
+offset_bottom = 110.0
 text = "Hunger: 50 / 100"
 
 [node name="animalHappiness" type="Label" parent="."]
-offset_left = 192.0
-offset_top = 271.0
-offset_right = 416.0
-offset_bottom = 302.0
+visible = false
+offset_left = -88.0
+offset_top = 111.0
+offset_right = 136.0
+offset_bottom = 142.0
 text = "Happiness: 50 / 100"
+
+[node name="pet sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(7.62939e-06, 7.62939e-06)
+scale = Vector2(3.7, 3.7)
+sprite_frames = SubResource("SpriteFrames_y5hxk")
+animation = &"blue dragon"
+frame_progress = 0.241342

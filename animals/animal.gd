@@ -11,7 +11,7 @@ var age : int = 0
 @export var type : String = ""
 @export var adoptability : int = 0
 @export var health : int = 0
-@export  var thirst : int = 0
+@export var thirst : int = 0
 @export var hunger : int = 0
 @export var happiness : int = 0
 
@@ -39,6 +39,8 @@ func _ready():
 	for i in range(len(type_array)):
 		if "\r" in type_array[i]:
 			type_array[i] = type_array[i].replace("\r","")
+		if "#" in type_array[i]: # cludgy way to remove unwanted types of animals
+			type_array[i] = ""
 	
 	# remove empty strings from arrays (generally the enter at the end of the file)
 	var sanatize = true
@@ -62,11 +64,11 @@ func _ready():
 	self.happiness = randi()%100 + 1
 	
 	##### debugging #####
-	self.adoptability = 50
-	self.health = 100
-	self.thirst = 100
-	self.hunger = 100
-	self.happiness = 100
+#	self.adoptability = 50
+#	self.health = 100
+#	self.thirst = 100
+#	self.hunger = 100
+#	self.happiness = 100
 	#####################
 	
 	print("Initializing new animal:")
