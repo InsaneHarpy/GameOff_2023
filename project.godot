@@ -21,19 +21,22 @@ Global="*res://global.gd"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
-window/stretch/mode="canvas_items"
+window/size/viewport_width=900
+window/size/viewport_height=750
+window/stretch/mode="viewport"
 
 [dotnet]
 
 project/assembly_name="Papa's Adoptoria"
 
-
 [editor]
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[gui]
+
+theme/custom_font="res://art-assets/fonts/MaintTextFont.ttf"
 
 [input]
 
@@ -45,4 +48,7 @@ mouse_click={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true

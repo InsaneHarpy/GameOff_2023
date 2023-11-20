@@ -1,5 +1,5 @@
-dragon
-cerberus
-nine tailed fox
-griffin
-jackalope
+Dragon
+#Cerberus
+Nine Tailed Fox
+#Griffin
+#Jackalope

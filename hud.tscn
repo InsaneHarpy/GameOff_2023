@@ -1,46 +1,96 @@
-[gd_scene load_steps=3 format=3 uid="uid://17ali6nd4rgr"]
+[gd_scene load_steps=7 format=3 uid="uid://17ali6nd4rgr"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_1op7w"]
+[ext_resource type="Texture2D" uid="uid://cvqadnc8amyk4" path="res://art-assets/kennel-screen/Submenu.png" id="2_fa7ct"]
+[ext_resource type="Texture2D" uid="uid://cckx5v5y1bka1" path="res://art-assets/kennel-screen/Energy.png" id="2_gy3wh"]
+[ext_resource type="Texture2D" uid="uid://cfocqys1lxc3h" path="res://art-assets/kennel-screen/Money.png" id="3_icv0p"]
+[ext_resource type="Texture2D" uid="uid://c2s4pwcx7hay8" path="res://art-assets/kennel-screen/End Day.png" id="3_vd7no"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1lr4o"]
-font_size = 40
+font_size = 27
 
 [node name="HUD" type="CanvasGroup"]
 script = ExtResource("1_1op7w")
 
-[node name="Energy Bar" type="Label" parent="."]
-offset_left = 813.0
-offset_top = 862.0
-offset_right = 1115.0
-offset_bottom = 920.0
-text = "Energy: 50 / 100"
+[node name="Ebar_placeholder" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(300, 60)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 300.0
+offset_top = 664.0
+offset_right = 600.0
+offset_bottom = 724.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_gy3wh")
+
+[node name="Energy Bar" type="Label" parent="Ebar_placeholder"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -38.0
+offset_right = 152.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "50 / 100"
 label_settings = SubResource("LabelSettings_1lr4o")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Monies" type="Label" parent="."]
-offset_left = 813.0
-offset_top = 956.0
-offset_right = 1115.0
-offset_bottom = 1014.0
-text = "Money: $$$"
+[node name="money" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(130, 60)
+offset_left = 385.0
+offset_top = 592.0
+offset_right = 515.0
+offset_bottom = 652.0
+texture = ExtResource("3_icv0p")
+stretch_mode = 4
+
+[node name="Monies" type="Label" parent="money"]
+layout_mode = 0
+offset_left = -72.0
+offset_right = 230.0
+offset_bottom = 58.0
+text = "$$$"
 label_settings = SubResource("LabelSettings_1lr4o")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Available Animals" type="Button" parent="."]
-offset_left = 43.0
-offset_top = 925.0
-offset_right = 315.0
-offset_bottom = 1044.0
-text = "Available Animals"
+[node name="Available Animals" type="TextureButton" parent="."]
+offset_left = 24.0
+offset_top = 472.0
+offset_right = 249.0
+offset_bottom = 727.0
+texture_normal = ExtResource("2_fa7ct")
+texture_pressed = ExtResource("2_fa7ct")
+texture_hover = ExtResource("2_fa7ct")
+texture_disabled = ExtResource("2_fa7ct")
+texture_focused = ExtResource("2_fa7ct")
+stretch_mode = 4
 
-[node name="Next Day" type="Button" parent="."]
-offset_left = 1605.0
-offset_top = 925.0
-offset_right = 1877.0
-offset_bottom = 1044.0
-text = "Next Day"
+[node name="Next Day" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(165, 170)
+offset_left = 712.0
+offset_top = 552.0
+offset_right = 877.0
+offset_bottom = 722.0
+texture_normal = ExtResource("3_vd7no")
+stretch_mode = 4
+
+[node name="MenuButton" type="MenuButton" parent="."]
+offset_left = 64.0
+offset_top = 616.0
+offset_right = 208.0
+offset_bottom = 712.0
+text = "test"
 
 [connection signal="pressed" from="Available Animals" to="." method="_on_available_animals_pressed"]
 [connection signal="pressed" from="Next Day" to="." method="_on_next_day_pressed"]
