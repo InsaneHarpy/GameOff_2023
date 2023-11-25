@@ -72,6 +72,12 @@ func _on_play_with_pet_pressed():
 func _on_back_pressed():
 	Global.current_animals[self.kennelNo] = Global.active_animal
 	Global.goto_scene("res://kennel_room/kennel_room.tscn")
+	# reset global actives otherwise it somehow remembers and will update previous selected animals
+	# for some forsaken reason
+	# genuinely... why?
+	Global.active_animal = {}
+	Global.active_kennel = -1
+	
 
 func _sprite_animation_pause(delta):
 	'''

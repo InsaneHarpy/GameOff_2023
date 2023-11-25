@@ -17,6 +17,20 @@ var current_animals = {1: {'name': 'Spyro',
 						   'health': 25,
 						   'thirst': 10,
 						   'hunger': 10,
+						   'happiness': 0},
+						2: {'name': 'Winnie',
+						   'type': 'Nine Tailed Fox',
+						   'adoptability': 75,
+						   'health': 25,
+						   'thirst': 10,
+						   'hunger': 10,
+						   'happiness': 0},
+						3: {'name': 'Jabu',
+						   'type': 'Griffin',
+						   'adoptability': 75,
+						   'health': 25,
+						   'thirst': 10,
+						   'hunger': 10,
 						   'happiness': 0}
 						}
 var available_animals = {1: "",
@@ -36,7 +50,8 @@ var click_play_petinc : int = 10
 var click_play_stamdec : int = 10
 
 var animations = {'Dragon':'blue dragon',
-				  'Nine Tailed Fox': 'fox'}
+				  'Nine Tailed Fox': 'fox',
+				  'Griffin': 'gryphon'}
 
 
 # Called when the node enters the scene tree for the first time.

@@ -64,11 +64,11 @@ func _process(delta):
 	get_node("animalHappiness").text = "Happiness: " + str(self.happiness) + " / 100"
 	###### end debugging ############
 	
-func update_animal(dict={}, empty = false):
+func update_animal(dict={}, kempty = false):
 	'''
 	Pass dictionary of animal info to kennel
 	'''
-	self.empty = empty
+	self.empty = kempty
 
 	if not self.empty:
 		self.animalName = dict['name']

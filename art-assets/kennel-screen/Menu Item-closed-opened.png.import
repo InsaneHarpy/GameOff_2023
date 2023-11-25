@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8g708mbdn8nh"
-path="res://.godot/imported/clipboard.png-5a0c2cb685b00a83ff5d047b1c3f2647.ctex"
+uid="uid://brd5dfpwsnug7"
+path="res://.godot/imported/Menu Item-closed-opened.png-5b5193e82771cac554cab4f7a16cc369.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/clipboard.png"
-dest_files=["res://.godot/imported/clipboard.png-5a0c2cb685b00a83ff5d047b1c3f2647.ctex"]
+source_file="res://art-assets/kennel-screen/Menu Item-closed-opened.png"
+dest_files=["res://.godot/imported/Menu Item-closed-opened.png-5b5193e82771cac554cab4f7a16cc369.ctex"]
 
 [params]
 

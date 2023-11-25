@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://17ali6nd4rgr"]
+[gd_scene load_steps=8 format=3 uid="uid://17ali6nd4rgr"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_1op7w"]
 [ext_resource type="Texture2D" uid="uid://cvqadnc8amyk4" path="res://art-assets/kennel-screen/Submenu.png" id="2_fa7ct"]
 [ext_resource type="Texture2D" uid="uid://cckx5v5y1bka1" path="res://art-assets/kennel-screen/Energy.png" id="2_gy3wh"]
 [ext_resource type="Texture2D" uid="uid://cfocqys1lxc3h" path="res://art-assets/kennel-screen/Money.png" id="3_icv0p"]
 [ext_resource type="Texture2D" uid="uid://c2s4pwcx7hay8" path="res://art-assets/kennel-screen/End Day.png" id="3_vd7no"]
+[ext_resource type="Texture2D" uid="uid://brd5dfpwsnug7" path="res://art-assets/kennel-screen/Menu Item-closed-opened.png" id="4_i5h8o"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1lr4o"]
 font_size = 27
@@ -69,7 +70,7 @@ offset_left = 24.0
 offset_top = 472.0
 offset_right = 249.0
 offset_bottom = 727.0
-texture_normal = ExtResource("2_fa7ct")
+texture_normal = ExtResource("4_i5h8o")
 texture_pressed = ExtResource("2_fa7ct")
 texture_hover = ExtResource("2_fa7ct")
 texture_disabled = ExtResource("2_fa7ct")
