@@ -1,41 +1,145 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwwruuyj5grwp"]
+[gd_scene load_steps=18 format=3 uid="uid://dwwruuyj5grwp"]
 
 [ext_resource type="Script" path="res://main_menu_screen/main_menu.gd" id="1_1nxru"]
-[ext_resource type="FontFile" uid="uid://civthkg8buw10" path="res://art-assets/fonts/HeaderPixelFont.TTF" id="2_mgwli"]
+[ext_resource type="Texture2D" uid="uid://cf2iqiu3shd2s" path="res://art-assets/title-screen/background.png" id="2_krmob"]
+[ext_resource type="Texture2D" uid="uid://cuhk2swlsjjan" path="res://art-assets/title-screen/title.png" id="3_efvqq"]
+[ext_resource type="Texture2D" uid="uid://86dbnf1rabuq" path="res://art-assets/title-screen/playBUttons1.png" id="4_guhvu"]
+[ext_resource type="Texture2D" uid="uid://vh352tluh12s" path="res://art-assets/title-screen/playBUttons2.png" id="5_de7dx"]
+[ext_resource type="Texture2D" uid="uid://bbu431kra4d01" path="res://art-assets/title-screen/scaleSelection.png" id="6_5a3ph"]
+[ext_resource type="Texture2D" uid="uid://doiocb4krurda" path="res://art-assets/title-screen/quitBUttons1.png" id="6_my77w"]
+[ext_resource type="Texture2D" uid="uid://b150ej0jvkike" path="res://art-assets/title-screen/quitBUttons2.png" id="7_n0mnu"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_gsr7c"]
-font = ExtResource("2_mgwli")
-font_size = 40
+[sub_resource type="AtlasTexture" id="AtlasTexture_yyd8n"]
+atlas = ExtResource("3_efvqq")
+region = Rect2(1169, 0, 167, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06rm8"]
+atlas = ExtResource("3_efvqq")
+region = Rect2(1002, 0, 167, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7m4d"]
+atlas = ExtResource("3_efvqq")
+region = Rect2(0, 0, 167, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13mcm"]
+atlas = ExtResource("3_efvqq")
+region = Rect2(167, 0, 167, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vc40c"]
+atlas = ExtResource("3_efvqq")
+region = Rect2(334, 0, 167, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_waqc4"]
+atlas = ExtResource("3_efvqq")
+region = Rect2(501, 0, 167, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_of57q"]
+atlas = ExtResource("3_efvqq")
+region = Rect2(668, 0, 167, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3ar1"]
+atlas = ExtResource("3_efvqq")
+region = Rect2(835, 0, 167, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wyc41"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yyd8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06rm8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7m4d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13mcm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vc40c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_waqc4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_of57q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3ar1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="main_menu" type="Node2D"]
 script = ExtResource("1_1nxru")
 
-[node name="Play" type="Button" parent="."]
-offset_left = 176.0
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 180.0
+offset_bottom = 150.0
+scale = Vector2(5, 5)
+texture = ExtResource("2_krmob")
+stretch_mode = 4
+metadata/_edit_lock_ = true
+
+[node name="Title" type="AnimatedSprite2D" parent="."]
+position = Vector2(450, 248)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_wyc41")
+autoplay = "default"
+frame = 7
+frame_progress = 1.0
+metadata/_edit_lock_ = true
+
+[node name="Play" type="TextureButton" parent="."]
+offset_left = 313.0
 offset_top = 336.0
-offset_right = 696.0
-offset_bottom = 464.0
-theme_override_font_sizes/font_size = 42
-text = "Play"
+offset_right = 368.0
+offset_bottom = 358.0
+scale = Vector2(5, 5)
+texture_normal = ExtResource("4_guhvu")
+texture_pressed = ExtResource("5_de7dx")
+stretch_mode = 4
+metadata/_edit_lock_ = true
 
-[node name="Quit" type="Button" parent="."]
-offset_left = 176.0
-offset_top = 520.0
-offset_right = 696.0
-offset_bottom = 648.0
-theme_override_font_sizes/font_size = 42
-text = "Quit"
+[node name="play_hover" type="TextureRect" parent="Play"]
+visible = false
+custom_minimum_size = Vector2(53, 7)
+layout_mode = 0
+offset_left = 1.4
+offset_top = 8.0
+offset_right = 54.4
+offset_bottom = 16.0
+texture = ExtResource("6_5a3ph")
+stretch_mode = 4
+metadata/_edit_lock_ = true
 
-[node name="Label" type="Label" parent="."]
-offset_top = 48.0
-offset_right = 896.0
-offset_bottom = 264.0
-text = "Scales, Tails,
-&
-Whiskers"
-label_settings = SubResource("LabelSettings_gsr7c")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Quit" type="TextureButton" parent="."]
+offset_left = 313.0
+offset_top = 480.0
+offset_right = 368.0
+offset_bottom = 502.0
+scale = Vector2(5, 5)
+texture_normal = ExtResource("6_my77w")
+texture_pressed = ExtResource("7_n0mnu")
+metadata/_edit_lock_ = true
 
+[node name="quit_hover" type="TextureRect" parent="Quit"]
+visible = false
+custom_minimum_size = Vector2(53, 7)
+offset_left = 1.4
+offset_top = 8.0
+offset_right = 54.4
+offset_bottom = 16.0
+texture = ExtResource("6_5a3ph")
+stretch_mode = 4
+metadata/_edit_lock_ = true
+
+[connection signal="mouse_entered" from="Play" to="." method="_on_play_mouse_entered"]
+[connection signal="mouse_exited" from="Play" to="." method="_on_play_mouse_exited"]
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="mouse_entered" from="Quit" to="." method="_on_quit_mouse_entered"]
+[connection signal="mouse_exited" from="Quit" to="." method="_on_quit_mouse_exited"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

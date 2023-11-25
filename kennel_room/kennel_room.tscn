@@ -18,6 +18,7 @@ offset_right = 904.0
 offset_bottom = 752.0
 texture = ExtResource("2_42csq")
 stretch_mode = 4
+metadata/_edit_lock_ = true
 
 [node name="Kennel1" parent="." instance=ExtResource("1_ywjtv")]
 position = Vector2(176, 152)

@@ -1,11 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://17ali6nd4rgr"]
+[gd_scene load_steps=11 format=3 uid="uid://17ali6nd4rgr"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_1op7w"]
+[ext_resource type="Texture2D" uid="uid://0rjcnxrs8f6h" path="res://art-assets/kennel-screen/USEME/energy1.png" id="2_bhbv5"]
 [ext_resource type="Texture2D" uid="uid://cvqadnc8amyk4" path="res://art-assets/kennel-screen/Submenu.png" id="2_fa7ct"]
 [ext_resource type="Texture2D" uid="uid://cckx5v5y1bka1" path="res://art-assets/kennel-screen/Energy.png" id="2_gy3wh"]
+[ext_resource type="Texture2D" uid="uid://c6ol4ekuqyp2" path="res://art-assets/kennel-screen/USEME/energy2.png" id="3_3ve12"]
 [ext_resource type="Texture2D" uid="uid://cfocqys1lxc3h" path="res://art-assets/kennel-screen/Money.png" id="3_icv0p"]
-[ext_resource type="Texture2D" uid="uid://c2s4pwcx7hay8" path="res://art-assets/kennel-screen/End Day.png" id="3_vd7no"]
 [ext_resource type="Texture2D" uid="uid://brd5dfpwsnug7" path="res://art-assets/kennel-screen/Menu Item-closed-opened.png" id="4_i5h8o"]
+[ext_resource type="Texture2D" uid="uid://f7bon01ujurf" path="res://art-assets/kennel-screen/USEME/endDay1.png" id="6_pra88"]
+[ext_resource type="Texture2D" uid="uid://dq2w4kmjs1rdj" path="res://art-assets/kennel-screen/USEME/endDay2.png" id="7_7cput"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1lr4o"]
 font_size = 27
@@ -13,7 +16,19 @@ font_size = 27
 [node name="HUD" type="CanvasGroup"]
 script = ExtResource("1_1op7w")
 
+[node name="energy_bar" type="TextureProgressBar" parent="."]
+offset_left = 304.0
+offset_top = 664.0
+offset_right = 364.0
+offset_bottom = 676.0
+scale = Vector2(5, 5)
+value = 50.0
+texture_under = ExtResource("2_bhbv5")
+texture_progress = ExtResource("3_3ve12")
+metadata/_edit_lock_ = true
+
 [node name="Ebar_placeholder" type="TextureRect" parent="."]
+visible = false
 custom_minimum_size = Vector2(300, 60)
 anchors_preset = 8
 anchor_left = 0.5
@@ -27,8 +42,10 @@ offset_bottom = 724.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_gy3wh")
+metadata/_edit_lock_ = true
 
 [node name="Energy Bar" type="Label" parent="Ebar_placeholder"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -45,6 +62,7 @@ text = "50 / 100"
 label_settings = SubResource("LabelSettings_1lr4o")
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_lock_ = true
 
 [node name="money" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(130, 60)
@@ -83,7 +101,8 @@ offset_left = 712.0
 offset_top = 552.0
 offset_right = 877.0
 offset_bottom = 722.0
-texture_normal = ExtResource("3_vd7no")
+texture_normal = ExtResource("6_pra88")
+texture_pressed = ExtResource("7_7cput")
 stretch_mode = 4
 
 [node name="MenuButton" type="MenuButton" parent="."]
