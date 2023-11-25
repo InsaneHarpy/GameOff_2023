@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://0fqkfxva5a8d"]
+
+[ext_resource type="Script" path="res://kennel_room/kennel_room.gd" id="1_8tavh"]
+[ext_resource type="PackedScene" uid="uid://br2netp27nhyg" path="res://kennel_room/kennel.tscn" id="1_ywjtv"]
+[ext_resource type="Texture2D" uid="uid://mg74fyn6jeos" path="res://art-assets/kennel-screen/Bkgnd.png" id="2_42csq"]
+[ext_resource type="PackedScene" uid="uid://17ali6nd4rgr" path="res://hud.tscn" id="3_r4qfv"]
+
+[node name="kennel_room" type="Node2D"]
+script = ExtResource("1_8tavh")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Kennel Room: View the animals currently stored here"
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 904.0
+offset_bottom = 752.0
+texture = ExtResource("2_42csq")
+stretch_mode = 4
+
+[node name="Kennel1" parent="." instance=ExtResource("1_ywjtv")]
+position = Vector2(176, 152)
+KennelNo = 1
+animalName = "Pepporino"
+adoptability = 25
+health = 50
+thirst = 31
+hunger = 45
+happiness = 45
+
+[node name="Kennel2" parent="." instance=ExtResource("1_ywjtv")]
+position = Vector2(456, 152)
+KennelNo = 2
+adoptability = 45
+health = 12
+thirst = 3
+hunger = 7
+happiness = 5
+
+[node name="Kennel3" parent="." instance=ExtResource("1_ywjtv")]
+position = Vector2(736, 152)
+KennelNo = 3
+health = 100
+thirst = 100
+hunger = 100
+happiness = 100
+
+[node name="Kennel4" parent="." instance=ExtResource("1_ywjtv")]
+position = Vector2(176, 417)
+KennelNo = 4
+health = 100
+thirst = 100
+hunger = 100
+happiness = 100
+
+[node name="Kennel5" parent="." instance=ExtResource("1_ywjtv")]
+position = Vector2(456, 417)
+KennelNo = 5
+health = 100
+thirst = 100
+hunger = 100
+happiness = 100
+
+[node name="Kennel6" parent="." instance=ExtResource("1_ywjtv")]
+position = Vector2(736, 417)
+KennelNo = 6
+health = 100
+thirst = 100
+hunger = 100
+happiness = 100
+
+[node name="HUD" parent="." instance=ExtResource("3_r4qfv")]
+metadata/_edit_lock_ = true

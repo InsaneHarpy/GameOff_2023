@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwwruuyj5grwp"]
+
+[ext_resource type="Script" path="res://main_menu_screen/main_menu.gd" id="1_1nxru"]
+[ext_resource type="FontFile" uid="uid://civthkg8buw10" path="res://art-assets/fonts/HeaderPixelFont.TTF" id="2_mgwli"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gsr7c"]
+font = ExtResource("2_mgwli")
+font_size = 40
+
+[node name="main_menu" type="Node2D"]
+script = ExtResource("1_1nxru")
+
+[node name="Play" type="Button" parent="."]
+offset_left = 176.0
+offset_top = 336.0
+offset_right = 696.0
+offset_bottom = 464.0
+theme_override_font_sizes/font_size = 42
+text = "Play"
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 176.0
+offset_top = 520.0
+offset_right = 696.0
+offset_bottom = 648.0
+theme_override_font_sizes/font_size = 42
+text = "Quit"
+
+[node name="Label" type="Label" parent="."]
+offset_top = 48.0
+offset_right = 896.0
+offset_bottom = 264.0
+text = "Scales, Tails,
+&
+Whiskers"
+label_settings = SubResource("LabelSettings_gsr7c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

@@ -1,0 +1,240 @@
+[gd_scene load_steps=23 format=3 uid="uid://c6os07eenikhl"]
+
+[ext_resource type="Script" path="res://animals/animal_view.gd" id="1_o2tut"]
+[ext_resource type="Texture2D" uid="uid://mg74fyn6jeos" path="res://art-assets/kennel-screen/Bkgnd.png" id="2_depni"]
+[ext_resource type="Texture2D" uid="uid://dh2owhm036fkh" path="res://art-assets/pet-view-screen/Clipboard.png" id="3_a5j0k"]
+[ext_resource type="Texture2D" uid="uid://cktf71ov352u1" path="res://art-assets/pet-sprites/BlueDragon-sprite.png" id="4_6y6n5"]
+[ext_resource type="PackedScene" uid="uid://17ali6nd4rgr" path="res://hud.tscn" id="4_3586e"]
+[ext_resource type="Texture2D" uid="uid://dldtojjop2ois" path="res://art-assets/pet-sprites/Fox-sprite.png" id="5_qf2xf"]
+[ext_resource type="Texture2D" uid="uid://5kn3d4iaolb" path="res://art-assets/pet-sprites/Gryphon-sprite.png" id="7_haag8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lbp87"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_csxle"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0jxkl"]
+size = Vector2(20, 20)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_p5rfr"]
+size = Vector2(20, 20)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_abuqo"]
+size = Vector2(20, 20)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rwou4"]
+size = Vector2(20, 20)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_l1uwy"]
+size = Vector2(20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ui831"]
+atlas = ExtResource("4_6y6n5")
+region = Rect2(0, 0, 45, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fh6su"]
+atlas = ExtResource("4_6y6n5")
+region = Rect2(45, 0, 45, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntkkf"]
+atlas = ExtResource("5_qf2xf")
+region = Rect2(0, 0, 45, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awpeh"]
+atlas = ExtResource("5_qf2xf")
+region = Rect2(45, 0, 45, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbqeo"]
+atlas = ExtResource("7_haag8")
+region = Rect2(90, 0, 45, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnech"]
+atlas = ExtResource("7_haag8")
+region = Rect2(45, 0, 45, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_646xb"]
+atlas = ExtResource("7_haag8")
+region = Rect2(0, 0, 45, 45)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b0vbh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ui831")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fh6su")
+}],
+"loop": true,
+"name": &"blue dragon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ntkkf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awpeh")
+}],
+"loop": true,
+"name": &"fox",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbqeo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pnech")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pnech")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_646xb")
+}],
+"loop": true,
+"name": &"gryphon",
+"speed": 5.0
+}]
+
+[node name="Animal View" type="Node2D"]
+script = ExtResource("1_o2tut")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 904.0
+offset_bottom = 752.0
+texture = ExtResource("2_depni")
+stretch_mode = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(240, 272)
+scale = Vector2(5.914, 5)
+texture = ExtResource("3_a5j0k")
+
+[node name="KennelNo" type="Label" parent="."]
+offset_left = 112.0
+offset_top = 128.0
+offset_right = 336.0
+offset_bottom = 159.0
+text = "Kennel Number: "
+label_settings = SubResource("LabelSettings_lbp87")
+metadata/_edit_use_anchors_ = true
+
+[node name="animalName" type="Label" parent="."]
+offset_left = 152.0
+offset_top = 152.0
+offset_right = 376.0
+offset_bottom = 183.0
+text = "Name: -"
+label_settings = SubResource("LabelSettings_csxle")
+metadata/_edit_use_anchors_ = true
+
+[node name="animalType" type="Label" parent="."]
+offset_left = 152.0
+offset_top = 174.0
+offset_right = 376.0
+offset_bottom = 205.0
+text = "Type: -"
+label_settings = SubResource("LabelSettings_lbp87")
+metadata/_edit_use_anchors_ = true
+
+[node name="animalAdoptability" type="Label" parent="."]
+offset_left = 152.0
+offset_top = 200.0
+offset_right = 376.0
+offset_bottom = 231.0
+text = "Adoptibility: 10 / 100"
+label_settings = SubResource("LabelSettings_lbp87")
+metadata/_edit_use_anchors_ = true
+
+[node name="animalHealth" type="Label" parent="."]
+offset_left = 152.0
+offset_top = 224.0
+offset_right = 376.0
+offset_bottom = 255.0
+text = "Health: 50 / 100"
+label_settings = SubResource("LabelSettings_lbp87")
+metadata/_edit_use_anchors_ = true
+
+[node name="animalThirst" type="Label" parent="."]
+offset_left = 152.0
+offset_top = 248.0
+offset_right = 376.0
+offset_bottom = 279.0
+text = "Thirst: 50 / 100"
+label_settings = SubResource("LabelSettings_lbp87")
+metadata/_edit_use_anchors_ = true
+
+[node name="animalHunger" type="Label" parent="."]
+offset_left = 152.0
+offset_top = 272.0
+offset_right = 376.0
+offset_bottom = 303.0
+text = "Hunger: 50 / 100"
+label_settings = SubResource("LabelSettings_lbp87")
+metadata/_edit_use_anchors_ = true
+
+[node name="animalHappiness" type="Label" parent="."]
+offset_left = 152.0
+offset_top = 296.0
+offset_right = 376.0
+offset_bottom = 327.0
+text = "Happiness: 50 / 100"
+label_settings = SubResource("LabelSettings_lbp87")
+metadata/_edit_use_anchors_ = true
+
+[node name="Feed" type="Button" parent="."]
+offset_left = 120.0
+offset_top = 368.0
+offset_right = 184.0
+offset_bottom = 408.0
+text = "Feed"
+
+[node name="Water" type="Button" parent="."]
+offset_left = 200.0
+offset_top = 368.0
+offset_right = 264.0
+offset_bottom = 408.0
+text = "Water"
+
+[node name="Play with pet" type="Button" parent="."]
+offset_left = 280.0
+offset_top = 368.0
+offset_right = 352.0
+offset_bottom = 408.0
+text = "Play!"
+
+[node name="Adpot" type="Button" parent="."]
+offset_left = 120.0
+offset_top = 416.0
+offset_right = 352.0
+offset_bottom = 480.0
+text = "Approve Adoption"
+
+[node name="HUD" parent="." instance=ExtResource("4_3586e")]
+
+[node name="Back" type="TextureButton" parent="."]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 64.0
+offset_bottom = 64.0
+texture_normal = SubResource("PlaceholderTexture2D_0jxkl")
+texture_pressed = SubResource("PlaceholderTexture2D_p5rfr")
+texture_hover = SubResource("PlaceholderTexture2D_abuqo")
+texture_disabled = SubResource("PlaceholderTexture2D_rwou4")
+texture_focused = SubResource("PlaceholderTexture2D_l1uwy")
+stretch_mode = 0
+
+[node name="pet sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(704, 320)
+scale = Vector2(6.47222, 6.47222)
+sprite_frames = SubResource("SpriteFrames_b0vbh")
+animation = &"gryphon"
+
+[connection signal="pressed" from="Feed" to="." method="_on_feed_pressed"]
+[connection signal="pressed" from="Water" to="." method="_on_water_pressed"]
+[connection signal="pressed" from="Play with pet" to="." method="_on_play_with_pet_pressed"]
+[connection signal="pressed" from="Adpot" to="." method="_on_play_with_pet_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

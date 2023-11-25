@@ -10,20 +10,45 @@ config_version=5
 
 [application]
 
-config/name="Papa's Adoptoria"
+config/name="Scales, Tails, & Whiskers"
+run/main_scene="res://main_menu_screen/main_menu.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://global.gd"
+
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
-window/stretch/mode="canvas_items"
+window/size/viewport_width=900
+window/size/viewport_height=750
+window/stretch/mode="viewport"
 
 [dotnet]
 
 project/assembly_name="Papa's Adoptoria"
 
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
+
+[gui]
+
+theme/custom_font="res://art-assets/fonts/MaintTextFont.ttf"
+
+[input]
+
+mouse_click={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"pressed":false,"double_click":false,"script":null)
+]
+}
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true

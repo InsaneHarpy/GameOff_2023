@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cogpvrquq1h7e"]
+
+[ext_resource type="Script" path="res://animals/animal.gd" id="1_saer2"]
+[ext_resource type="Texture2D" uid="uid://ccu6n586q87wb" path="res://art/animals/temp_frog.png" id="2_nsoy6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tw87p"]
+radius = 144.0
+
+[node name="animal" type="Area2D"]
+script = ExtResource("1_saer2")
+metadata/_edit_lock_ = true
+
+[node name="temp replace with animated sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_nsoy6")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-8, 8)
+shape = SubResource("CircleShape2D_tw87p")
