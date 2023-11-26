@@ -236,5 +236,5 @@ animation = &"gryphon"
 [connection signal="pressed" from="Feed" to="." method="_on_feed_pressed"]
 [connection signal="pressed" from="Water" to="." method="_on_water_pressed"]
 [connection signal="pressed" from="Play with pet" to="." method="_on_play_with_pet_pressed"]
-[connection signal="pressed" from="Adpot" to="." method="_on_play_with_pet_pressed"]
+[connection signal="pressed" from="Adpot" to="." method="_on_adpot_pressed"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

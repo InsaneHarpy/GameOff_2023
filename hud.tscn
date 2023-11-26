@@ -1,17 +1,36 @@
-[gd_scene load_steps=11 format=3 uid="uid://17ali6nd4rgr"]
+[gd_scene load_steps=20 format=3 uid="uid://17ali6nd4rgr"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_1op7w"]
 [ext_resource type="Texture2D" uid="uid://0rjcnxrs8f6h" path="res://art-assets/kennel-screen/USEME/energy1.png" id="2_bhbv5"]
-[ext_resource type="Texture2D" uid="uid://cvqadnc8amyk4" path="res://art-assets/kennel-screen/Submenu.png" id="2_fa7ct"]
 [ext_resource type="Texture2D" uid="uid://cckx5v5y1bka1" path="res://art-assets/kennel-screen/Energy.png" id="2_gy3wh"]
 [ext_resource type="Texture2D" uid="uid://c6ol4ekuqyp2" path="res://art-assets/kennel-screen/USEME/energy2.png" id="3_3ve12"]
 [ext_resource type="Texture2D" uid="uid://cfocqys1lxc3h" path="res://art-assets/kennel-screen/Money.png" id="3_icv0p"]
-[ext_resource type="Texture2D" uid="uid://brd5dfpwsnug7" path="res://art-assets/kennel-screen/Menu Item-closed-opened.png" id="4_i5h8o"]
 [ext_resource type="Texture2D" uid="uid://f7bon01ujurf" path="res://art-assets/kennel-screen/USEME/endDay1.png" id="6_pra88"]
 [ext_resource type="Texture2D" uid="uid://dq2w4kmjs1rdj" path="res://art-assets/kennel-screen/USEME/endDay2.png" id="7_7cput"]
+[ext_resource type="FontFile" uid="uid://g2yychjq377n" path="res://art-assets/fonts/MaintTextFont.ttf" id="9_dhsty"]
+[ext_resource type="Texture2D" uid="uid://ca3wr45mod6vo" path="res://art-assets/kennel-screen/USEME/submenu1.png" id="10_gyuqu"]
+[ext_resource type="Texture2D" uid="uid://j6x0c5d30rob" path="res://art-assets/kennel-screen/USEME/submenu2.png" id="11_c2upj"]
+[ext_resource type="Texture2D" uid="uid://blvamlibhbkko" path="res://art-assets/kennel-screen/USEME/submenu3.png" id="12_3ctjs"]
+[ext_resource type="Texture2D" uid="uid://bb8ndunb3k8w7" path="res://art-assets/kennel-screen/USEME/SideArrows1.png" id="13_7k8rp"]
+[ext_resource type="Texture2D" uid="uid://c6bon5letx3ae" path="res://art-assets/kennel-screen/USEME/submenu4.png" id="13_14sx7"]
+[ext_resource type="Texture2D" uid="uid://0applu2bu56a" path="res://art-assets/kennel-screen/USEME/SideArrows2.png" id="14_8vgkn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1lr4o"]
 font_size = 27
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ucd7a"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_noe51"]
+line_spacing = 0.0
+font = ExtResource("9_dhsty")
+
+[sub_resource type="LabelSettings" id="LabelSettings_dikuv"]
+line_spacing = 0.0
+font = ExtResource("9_dhsty")
+
+[sub_resource type="LabelSettings" id="LabelSettings_o0wru"]
+line_spacing = 0.0
+font = ExtResource("9_dhsty")
 
 [node name="HUD" type="CanvasGroup"]
 script = ExtResource("1_1op7w")
@@ -78,22 +97,10 @@ layout_mode = 0
 offset_left = -72.0
 offset_right = 230.0
 offset_bottom = 58.0
-text = "$$$"
+text = "$$$ test"
 label_settings = SubResource("LabelSettings_1lr4o")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Available Animals" type="TextureButton" parent="."]
-offset_left = 24.0
-offset_top = 472.0
-offset_right = 249.0
-offset_bottom = 727.0
-texture_normal = ExtResource("4_i5h8o")
-texture_pressed = ExtResource("2_fa7ct")
-texture_hover = ExtResource("2_fa7ct")
-texture_disabled = ExtResource("2_fa7ct")
-texture_focused = ExtResource("2_fa7ct")
-stretch_mode = 4
 
 [node name="Next Day" type="TextureButton" parent="."]
 custom_minimum_size = Vector2(165, 170)
@@ -105,12 +112,104 @@ texture_normal = ExtResource("6_pra88")
 texture_pressed = ExtResource("7_7cput")
 stretch_mode = 4
 
-[node name="MenuButton" type="MenuButton" parent="."]
-offset_left = 64.0
-offset_top = 616.0
-offset_right = 208.0
-offset_bottom = 712.0
-text = "test"
+[node name="PanelContainer" type="PanelContainer" parent="."]
+clip_contents = true
+offset_left = 24.0
+offset_top = 664.0
+offset_right = 69.0
+offset_bottom = 676.0
+scale = Vector2(5, 5)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ucd7a")
+metadata/_edit_lock_ = true
 
-[connection signal="pressed" from="Available Animals" to="." method="_on_available_animals_pressed"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = -1
+metadata/_edit_lock_ = true
+
+[node name="Animal1" type="TextureButton" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("11_c2upj")
+metadata/_edit_lock_ = true
+
+[node name="Animal1 label" type="Label" parent="PanelContainer/VBoxContainer/Animal1"]
+layout_mode = 0
+offset_left = 9.6
+offset_top = 6.39999
+offset_right = 39.6
+offset_bottom = 21.4
+scale = Vector2(0.4, 0.4)
+text = "Anim1"
+label_settings = SubResource("LabelSettings_noe51")
+
+[node name="Animal2" type="TextureButton" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("12_3ctjs")
+metadata/_edit_lock_ = true
+
+[node name="Animal2 label" type="Label" parent="PanelContainer/VBoxContainer/Animal2"]
+layout_mode = 2
+offset_left = 9.6
+offset_top = 3.19998
+offset_right = 45.6
+offset_bottom = 18.2
+scale = Vector2(0.4, 0.4)
+text = "Anim2"
+label_settings = SubResource("LabelSettings_dikuv")
+
+[node name="Animal3" type="TextureButton" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("13_14sx7")
+metadata/_edit_lock_ = true
+
+[node name="Animal3 label" type="Label" parent="PanelContainer/VBoxContainer/Animal3"]
+offset_left = 9.6
+offset_top = 2.99998
+offset_right = 45.6
+offset_bottom = 18.0
+scale = Vector2(0.4, 0.4)
+text = "Anim3"
+label_settings = SubResource("LabelSettings_o0wru")
+
+[node name="available animals" type="TextureButton" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("10_gyuqu")
+stretch_mode = 4
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="."]
+offset_right = 672.0
+offset_bottom = 440.0
+scale = Vector2(5, 5)
+
+[node name="Left_ScreenNav" type="TextureButton" parent="."]
+offset_left = 8.0
+offset_top = 352.0
+offset_right = 48.0
+offset_bottom = 392.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("13_7k8rp")
+texture_pressed = ExtResource("14_8vgkn")
+stretch_mode = 4
+
+[node name="Right_ScreenNav" type="TextureButton" parent="."]
+offset_left = 824.0
+offset_top = 352.0
+offset_right = 860.0
+offset_bottom = 392.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("13_7k8rp")
+texture_pressed = ExtResource("14_8vgkn")
+stretch_mode = 4
+flip_h = true
+
 [connection signal="pressed" from="Next Day" to="." method="_on_next_day_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Animal1" to="." method="_on_animal_1_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Animal2" to="." method="_on_animal_2_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Animal3" to="." method="_on_animal_3_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/available animals" to="." method="_on_available_animals_pressed"]
+[connection signal="pressed" from="Left_ScreenNav" to="." method="_on_left_screen_nav_pressed"]
+[connection signal="pressed" from="Right_ScreenNav" to="." method="_on_right_screen_nav_pressed"]

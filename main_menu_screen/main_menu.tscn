@@ -129,6 +129,7 @@ metadata/_edit_lock_ = true
 [node name="quit_hover" type="TextureRect" parent="Quit"]
 visible = false
 custom_minimum_size = Vector2(53, 7)
+layout_mode = 0
 offset_left = 1.4
 offset_top = 8.0
 offset_right = 54.4

@@ -23,53 +23,26 @@ metadata/_edit_lock_ = true
 [node name="Kennel1" parent="." instance=ExtResource("1_ywjtv")]
 position = Vector2(176, 152)
 KennelNo = 1
-animalName = "Pepporino"
-adoptability = 25
-health = 50
-thirst = 31
-hunger = 45
-happiness = 45
 
 [node name="Kennel2" parent="." instance=ExtResource("1_ywjtv")]
 position = Vector2(456, 152)
 KennelNo = 2
-adoptability = 45
-health = 12
-thirst = 3
-hunger = 7
-happiness = 5
 
 [node name="Kennel3" parent="." instance=ExtResource("1_ywjtv")]
 position = Vector2(736, 152)
 KennelNo = 3
-health = 100
-thirst = 100
-hunger = 100
-happiness = 100
 
 [node name="Kennel4" parent="." instance=ExtResource("1_ywjtv")]
 position = Vector2(176, 417)
 KennelNo = 4
-health = 100
-thirst = 100
-hunger = 100
-happiness = 100
 
 [node name="Kennel5" parent="." instance=ExtResource("1_ywjtv")]
 position = Vector2(456, 417)
 KennelNo = 5
-health = 100
-thirst = 100
-hunger = 100
-happiness = 100
 
 [node name="Kennel6" parent="." instance=ExtResource("1_ywjtv")]
 position = Vector2(736, 417)
 KennelNo = 6
-health = 100
-thirst = 100
-hunger = 100
-happiness = 100
 
 [node name="HUD" parent="." instance=ExtResource("3_r4qfv")]
 metadata/_edit_lock_ = true

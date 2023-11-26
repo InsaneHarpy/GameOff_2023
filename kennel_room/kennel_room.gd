@@ -2,6 +2,7 @@ extends Node2D
 
 func _ready():
 #	self._debug_kennel_sprit()
+	Global.connect("newAnimal", setup_kennels)
 	self.setup_kennels()
 
 func setup_kennels():
@@ -10,14 +11,6 @@ func setup_kennels():
 		if self.has_node(kenstr % key):
 			var node = kenstr % key
 			get_node(node).update_animal(Global.current_animals[key])
-
-			
-
-func _debug_kennel_sprit():
-	get_node("Kennel1").update_animal('dragon')
-	get_node("Kennel2").update_animal('dragon')
-	get_node("Kennel3").update_animal('nine tailed fox')
-	get_node("Kennel4").update_animal('test')	
 	
 func _kennel_clicked(node):
 	if not node.empty:
