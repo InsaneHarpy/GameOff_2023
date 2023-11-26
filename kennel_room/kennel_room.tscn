@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://kennel_room/kennel_room.gd" id="1_8tavh"]
 [ext_resource type="PackedScene" uid="uid://br2netp27nhyg" path="res://kennel_room/kennel.tscn" id="1_ywjtv"]
-[ext_resource type="Texture2D" uid="uid://mg74fyn6jeos" path="res://art-assets/kennel-screen/Bkgnd.png" id="2_42csq"]
+[ext_resource type="Texture2D" uid="uid://o36vuhve80kk" path="res://art-assets/kennel-screen/USEME/Bkgnd.png" id="2_505tc"]
 [ext_resource type="PackedScene" uid="uid://17ali6nd4rgr" path="res://hud.tscn" id="3_r4qfv"]
 
 [node name="kennel_room" type="Node2D"]
@@ -16,7 +16,7 @@ text = "Kennel Room: View the animals currently stored here"
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 904.0
 offset_bottom = 752.0
-texture = ExtResource("2_42csq")
+texture = ExtResource("2_505tc")
 stretch_mode = 4
 metadata/_edit_lock_ = true
 

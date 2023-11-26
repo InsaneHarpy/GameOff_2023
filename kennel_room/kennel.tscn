@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://br2netp27nhyg"]
 
 [ext_resource type="Script" path="res://kennel_room/kennel.gd" id="1_epng7"]
-[ext_resource type="Texture2D" uid="uid://jk0ebj0852k0" path="res://art-assets/kennel-screen/SingleKennel.png" id="2_sbng1"]
+[ext_resource type="Texture2D" uid="uid://kvb5n1i0lgd2" path="res://art-assets/kennel-screen/USEME/SingleKennel.png" id="2_l4vpu"]
 [ext_resource type="Texture2D" uid="uid://cktf71ov352u1" path="res://art-assets/pet-sprites/BlueDragon-sprite.png" id="3_i76gl"]
 [ext_resource type="Texture2D" uid="uid://dldtojjop2ois" path="res://art-assets/pet-sprites/Fox-sprite.png" id="4_bgns6"]
 [ext_resource type="Texture2D" uid="uid://5kn3d4iaolb" path="res://art-assets/pet-sprites/Gryphon-sprite.png" id="5_hjscq"]
@@ -115,7 +115,7 @@ metadata/_edit_lock_ = true
 
 [node name="kennel" type="Sprite2D" parent="."]
 scale = Vector2(5, 5)
-texture = ExtResource("2_sbng1")
+texture = ExtResource("2_l4vpu")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
