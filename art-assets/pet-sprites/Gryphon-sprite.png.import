@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccu6n586q87wb"
-path="res://.godot/imported/temp_frog.png-1ea6b9ae278009126b7623f717a00c27.ctex"
+uid="uid://5kn3d4iaolb"
+path="res://.godot/imported/Gryphon-sprite.png-26e736159fd600004e57948a357267d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/animals/temp_frog.png"
-dest_files=["res://.godot/imported/temp_frog.png-1ea6b9ae278009126b7623f717a00c27.ctex"]
+source_file="res://art-assets/pet-sprites/Gryphon-sprite.png"
+dest_files=["res://.godot/imported/Gryphon-sprite.png-26e736159fd600004e57948a357267d8.ctex"]
 
 [params]
 

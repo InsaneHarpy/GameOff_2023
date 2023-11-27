@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cu1vynykosge7"
-path="res://.godot/imported/clipboard.png-3dee394b3d1c0b3e1f77fc8b17af0497.ctex"
+uid="uid://dq2w4kmjs1rdj"
+path="res://.godot/imported/endDay2.png-288c2e556835776294425786bb25d4b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://animals/clipboard.png"
-dest_files=["res://.godot/imported/clipboard.png-3dee394b3d1c0b3e1f77fc8b17af0497.ctex"]
+source_file="res://art-assets/kennel-screen/USEME/endDay2.png"
+dest_files=["res://.godot/imported/endDay2.png-288c2e556835776294425786bb25d4b3.ctex"]
 
 [params]
 

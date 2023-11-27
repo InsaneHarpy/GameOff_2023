@@ -1,37 +1,72 @@
-[gd_scene load_steps=11 format=3 uid="uid://br2netp27nhyg"]
+[gd_scene load_steps=19 format=3 uid="uid://br2netp27nhyg"]
 
 [ext_resource type="Script" path="res://kennel_room/kennel.gd" id="1_epng7"]
-[ext_resource type="Texture2D" uid="uid://g7bxads8v0nu" path="res://art-assets/kennel-screen/Kennel.png" id="2_7iisi"]
+[ext_resource type="Texture2D" uid="uid://kvb5n1i0lgd2" path="res://art-assets/kennel-screen/USEME/SingleKennel.png" id="2_l4vpu"]
 [ext_resource type="Texture2D" uid="uid://cktf71ov352u1" path="res://art-assets/pet-sprites/BlueDragon-sprite.png" id="3_i76gl"]
 [ext_resource type="Texture2D" uid="uid://dldtojjop2ois" path="res://art-assets/pet-sprites/Fox-sprite.png" id="4_bgns6"]
+[ext_resource type="Texture2D" uid="uid://5kn3d4iaolb" path="res://art-assets/pet-sprites/Gryphon-sprite.png" id="5_hjscq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_88wnf"]
 size = Vector2(11.8767, 11.7858)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ui831"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhpqb"]
 atlas = ExtResource("3_i76gl")
 region = Rect2(0, 0, 45, 45)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fh6su"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7po7"]
 atlas = ExtResource("3_i76gl")
 region = Rect2(45, 0, 45, 45)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ntkkf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4wnl"]
+atlas = ExtResource("3_i76gl")
+region = Rect2(90, 0, 45, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25egk"]
+atlas = ExtResource("3_i76gl")
+region = Rect2(135, 0, 45, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0880"]
 atlas = ExtResource("4_bgns6")
 region = Rect2(0, 0, 45, 45)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_awpeh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bvum"]
 atlas = ExtResource("4_bgns6")
 region = Rect2(45, 0, 45, 45)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_y5hxk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntxpp"]
+atlas = ExtResource("4_bgns6")
+region = Rect2(90, 0, 45, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8a42"]
+atlas = ExtResource("4_bgns6")
+region = Rect2(135, 0, 45, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwc4a"]
+atlas = ExtResource("5_hjscq")
+region = Rect2(90, 0, 45, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evywx"]
+atlas = ExtResource("5_hjscq")
+region = Rect2(45, 0, 45, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqty6"]
+atlas = ExtResource("5_hjscq")
+region = Rect2(0, 0, 45, 45)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hrypp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ui831")
+"texture": SubResource("AtlasTexture_qhpqb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fh6su")
+"texture": SubResource("AtlasTexture_i7po7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4wnl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25egk")
 }],
 "loop": true,
 "name": &"blue dragon",
@@ -39,13 +74,36 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ntkkf")
+"texture": SubResource("AtlasTexture_j0880")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_awpeh")
+"texture": SubResource("AtlasTexture_8bvum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ntxpp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8a42")
 }],
 "loop": true,
 "name": &"fox",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwc4a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evywx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evywx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqty6")
+}],
+"loop": true,
+"name": &"gryphon",
 "speed": 5.0
 }]
 
@@ -57,7 +115,7 @@ metadata/_edit_lock_ = true
 
 [node name="kennel" type="Sprite2D" parent="."]
 scale = Vector2(5, 5)
-texture = ExtResource("2_7iisi")
+texture = ExtResource("2_l4vpu")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -135,6 +193,5 @@ text = "Happiness: 50 / 100"
 [node name="pet sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(7.62939e-06, 7.62939e-06)
 scale = Vector2(3.7, 3.7)
-sprite_frames = SubResource("SpriteFrames_y5hxk")
-animation = &"blue dragon"
-frame_progress = 0.241342
+sprite_frames = SubResource("SpriteFrames_hrypp")
+animation = &"gryphon"

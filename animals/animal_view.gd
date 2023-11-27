@@ -16,6 +16,8 @@ var _anim_Pdelta = randi_range(0,1)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.connect("scrollAnimal", _ready) # This is hacky
+
 	if not self.empty and Global.active_kennel != -1:
 		self.kennelNo = Global.active_kennel
 		if Global.active_animal['type'] in Global.animations.keys():
@@ -60,7 +62,6 @@ func _on_water_pressed():
 		if Global.active_animal["thirst"] > 100:
 			Global.active_animal["thirst"] = 100
 
-
 func _on_play_with_pet_pressed():
 	if not self.empty and Global.player_energy >= Global.click_play_stamdec:
 		Global.active_animal["happiness"] += Global.click_play_petinc
@@ -68,11 +69,15 @@ func _on_play_with_pet_pressed():
 		if Global.active_animal["happiness"] > 100:
 			Global.active_animal["happiness"] = 100
 
-
 func _on_back_pressed():
 	Global.current_animals[self.kennelNo] = Global.active_animal
 	Global.goto_scene("res://kennel_room/kennel_room.tscn")
-
+	# reset global actives otherwise it somehow remembers and will update previous selected animals
+	# for some forsaken reason
+	# genuinely... why?
+	Global.active_animal = {}
+	Global.active_kennel = -1
+	
 func _sprite_animation_pause(delta):
 	'''
 	Randomly play and pause sprite animation
@@ -89,3 +94,12 @@ func _sprite_animation_pause(delta):
 			self._anim_pause = false
 			_animated_pet_sprite.speed_scale = 1
 			self._anim_Pdelta = 1
+
+func _on_adpot_pressed():
+	var addMon = Global.active_animal["adoptability"]
+	Global.player_money += addMon
+	Global.current_animals.erase(Global.active_kennel)
+	Global.fullKennels.erase(Global.active_kennel)
+	Global.active_kennel = -1
+	Global.active_animal = {}
+	Global.goto_scene("res://kennel_room/kennel_room.tscn")

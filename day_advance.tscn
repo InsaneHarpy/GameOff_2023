@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://bbhmnvqbywkvd"]
+
+[ext_resource type="Script" path="res://day_advance.gd" id="1_npjfa"]
+[ext_resource type="Texture2D" uid="uid://o36vuhve80kk" path="res://art-assets/kennel-screen/USEME/Bkgnd.png" id="1_w3sdd"]
+[ext_resource type="FontFile" uid="uid://civthkg8buw10" path="res://art-assets/fonts/HeaderPixelFont.TTF" id="2_guw7t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nxe7j"]
+font = ExtResource("2_guw7t")
+font_size = 129
+
+[sub_resource type="LabelSettings" id="LabelSettings_1nmeo"]
+font = ExtResource("2_guw7t")
+font_size = 129
+
+[node name="DayAdvance" type="Node2D"]
+script = ExtResource("1_npjfa")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(5, 5)
+texture = ExtResource("1_w3sdd")
+metadata/_edit_lock_ = true
+
+[node name="Day" type="Label" parent="."]
+offset_left = 288.0
+offset_top = 232.0
+offset_right = 621.0
+offset_bottom = 365.0
+text = "Day"
+label_settings = SubResource("LabelSettings_nxe7j")
+metadata/_edit_lock_ = true
+
+[node name="Counter" type="Label" parent="."]
+offset_top = 384.0
+offset_right = 896.0
+offset_bottom = 517.0
+text = "1"
+label_settings = SubResource("LabelSettings_1nmeo")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

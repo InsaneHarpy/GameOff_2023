@@ -54,21 +54,21 @@ func _process(delta):
 	# set values for kennel info
 	
 	###### debugging ############
-	get_node("KennelNo").text = "Kennel Number: " + str(self.KennelNo)
-	get_node("animalName").text = "Name: " + str(self.animalName)
-	get_node("animalType").text = "Type: " + str(self.type)
-	get_node("animalAdoptability").text = "Adoptability: " + str(self.adoptability) + " / 100"
-	get_node("animalHealth").text = "Health: " + str(self.health) + " / 100"
-	get_node("animalThirst").text = "Thirst: " + str(self.thirst) + " / 100"
-	get_node("animalHunger").text = "Hunger: " + str(self.hunger) + " / 100"
-	get_node("animalHappiness").text = "Happiness: " + str(self.happiness) + " / 100"
+#	get_node("KennelNo").text = "Kennel Number: " + str(self.KennelNo)
+#	get_node("animalName").text = "Name: " + str(self.animalName)
+#	get_node("animalType").text = "Type: " + str(self.type)
+#	get_node("animalAdoptability").text = "Adoptability: " + str(self.adoptability) + " / 100"
+#	get_node("animalHealth").text = "Health: " + str(self.health) + " / 100"
+#	get_node("animalThirst").text = "Thirst: " + str(self.thirst) + " / 100"
+#	get_node("animalHunger").text = "Hunger: " + str(self.hunger) + " / 100"
+#	get_node("animalHappiness").text = "Happiness: " + str(self.happiness) + " / 100"
 	###### end debugging ############
 	
-func update_animal(dict={}, empty = false):
+func update_animal(dict={}, kempty = false):
 	'''
 	Pass dictionary of animal info to kennel
 	'''
-	self.empty = empty
+	self.empty = kempty
 
 	if not self.empty:
 		self.animalName = dict['name']
@@ -103,8 +103,6 @@ func _sprite_animation_pause(delta):
 			self._anim_pause = false
 			_animated_pet_sprite.speed_scale = 1
 			self._anim_Pdelta = 1
-	
-	
 	
 func _enter_tree():
 	'''

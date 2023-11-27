@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://bn0hvy2cg1yjy"]
-
-[ext_resource type="Script" path="res://main_game_status.gd" id="1_nbkoj"]
-[ext_resource type="PackedScene" uid="uid://0fqkfxva5a8d" path="res://kennel_room/kennel_room.tscn" id="2_jidk5"]
-
-[node name="main_game_status" type="Node2D"]
-script = ExtResource("1_nbkoj")
-
-[node name="kennel_room" parent="." instance=ExtResource("2_jidk5")]

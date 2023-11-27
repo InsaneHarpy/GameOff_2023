@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8g708mbdn8nh"
-path="res://.godot/imported/clipboard.png-5a0c2cb685b00a83ff5d047b1c3f2647.ctex"
+uid="uid://c6ol4ekuqyp2"
+path="res://.godot/imported/energy2.png-78e03c3849987d0f81ffc999840d53e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/clipboard.png"
-dest_files=["res://.godot/imported/clipboard.png-5a0c2cb685b00a83ff5d047b1c3f2647.ctex"]
+source_file="res://art-assets/kennel-screen/USEME/energy2.png"
+dest_files=["res://.godot/imported/energy2.png-78e03c3849987d0f81ffc999840d53e4.ctex"]
 
 [params]
 
