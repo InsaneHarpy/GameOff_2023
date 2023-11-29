@@ -1,15 +1,20 @@
 extends Node
 
+###### UTILS ########
+
 var current_scene = null
 var scene_path : String = ""
+var prev_scene : String = "res://kennel_room/kennel_room.tscn"
 var daycount : int = 1
+var fade : bool = false
+
+
+########## Kennel info #############
 
 var active_kennel : int = -1
 var active_animal = {}
 var fullKennels = [1,2,3]
 var maxKennels : int = 6
-
-var fade : bool = false
 
 var current_animals = {1: {'name': 'Spyro',
 						   'type': 'Dragon',
@@ -17,29 +22,47 @@ var current_animals = {1: {'name': 'Spyro',
 						   'health': 25,
 						   'thirst': 10,
 						   'hunger': 10,
-						   'happiness': 0},
+						   'happiness': 0,
+						   'toy': ''},
 						2: {'name': 'Winnie',
 						   'type': 'Nine Tailed Fox',
 						   'adoptability': 75,
 						   'health': 25,
 						   'thirst': 10,
 						   'hunger': 10,
-						   'happiness': 0},
+						   'happiness': 0,
+						   'toy': ''},
 						3: {'name': 'Jabu',
 						   'type': 'Griffin',
 						   'adoptability': 75,
 						   'health': 25,
 						   'thirst': 10,
 						   'hunger': 10,
-						   'happiness': 0}
+						   'happiness': 0,
+						   'toy': ''}
 						}
+
+##### Animals that can be brought into shelter #######
 var available_animals = {1: {},
 						 2: {},
 						 3: {}}
+
+######### Vars to hold random animal types and names #########
+
 var name_array
 var type_array
+
+########## Player stats #########
 var player_energy : int = 50
 var player_money : int = 500
+
+var player_inventory = {'foodT1' : 0,
+						'foodT2' : 0,
+						'foodT3' : 0,
+						'mouse' : 0,
+						'bone' : 0,
+						'yarn' : 0,
+						'barley' : 0}
 
 # amounts for interacting with animals in animal view
 var click_feed_petinc : int = 10
@@ -51,11 +74,25 @@ var click_water_stamdec : int = 10
 var click_play_petinc : int = 10
 var click_play_stamdec : int = 10
 
+##### Store Prices ######
+var foodT1_price : int = 10
+var foodT2_price : int = 20
+var foodT3_price : int = 50
+var mouse_price : int = 15
+var bone_price : int = 30
+var yarn_price : int = 50
+var barley_price: int = 100
+
+						
+##### Animation handler #############
+
 var animations = {'Dragon':'blue dragon',
 				  'Nine Tailed Fox': 'fox',
 				  'Griffin': 'gryphon'}
 				
 				
+###### Signal managment ###########
+
 signal scrollAnimal
 signal newAnimal
 
@@ -124,6 +161,7 @@ func generate_available_animals():
 		self.available_animals[key]["thirst"] = randi()%100 + 1
 		self.available_animals[key]["hunger"] = randi()%100 + 1
 		self.available_animals[key]["happiness"] = randi()%100 + 1
+		self.available_animals[key]["toy"] = ""
 
 func advance_day():
 	randomize()
@@ -141,9 +179,9 @@ func advance_day():
 		#########
 		
 		# put how health decreases based upon health and thirst values
-		if self.current_animals[key]['thirst'] <= 0: # thirst very bad to be zero.
+		if self.current_animals[key]['thirst'] <= 25: # thirst very bad to be zero.
 			self.current_animals[key]['health'] -= 10
-		elif self.current_animals[key]['hunger'] <= 0: # hunger very bad to be zero
+		elif self.current_animals[key]['hunger'] <= 15: # hunger very bad to be zero
 			self.current_animals[key]['health'] -=10
 		
 		#########
@@ -184,7 +222,7 @@ func advance_day():
 		
 		# how does pet adoptability increase?
 		if self.current_animals[key]['happiness'] > 75:
-			self.current_animals[key]['adoptability'] += 1
+			self.current_animals[key]['adoptability'] += randi()%6 + 1
 		
 		#########
 		
@@ -225,6 +263,7 @@ func goto_scene(path):
 	# The solution is to defer the load to a later time, when
 	# we can be sure that no code from the current scene is running:
 	self.fade = true
+	self.prev_scene = self.scene_path
 	self.scene_path = path
 	call_deferred("_deferred_goto_scene", path)
 

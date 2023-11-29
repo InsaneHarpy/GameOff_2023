@@ -46,14 +46,37 @@ func _process(delta):
 		get_node("animalHappiness").text = "Happiness: " + str(Global.active_animal['happiness']) + " / 100"
 	else:
 		self._animated_pet_sprite.hide()
+		
+	# Disable buttons if player energy is too low
+		
+	if Global.player_energy < Global.click_feed_stamdec:
+		$Feed.disabled = true
+	else:
+		$Feed.disabled = false
+	
+	if Global.player_energy < Global.click_water_stamdec:
+		$Water.disabled = true
+	else:
+		$Water.disabled = false
 
+	if Global.player_energy < Global.click_play_stamdec:
+		$"Play with pet".disabled = true
+	else:
+		$"Play with pet".disabled = false
+	
+	# Limit adoptability of pet if ranking is too low
+	
+	if Global.active_animal['adoptability'] < 70:
+		$Adpot.disabled = true
+	else:
+		$Adpot.disabled = false
+		
 func _on_feed_pressed():
 	if not self.empty and Global.player_energy >= Global.click_feed_stamdec:
 		Global.active_animal["hunger"] += Global.click_feed_petinc
 		Global.player_energy -= Global.click_feed_stamdec
 		if Global.active_animal["hunger"] > 100:
 			Global.active_animal["hunger"] = 100
-
 
 func _on_water_pressed():
 	if not self.empty and Global.player_energy >= Global.click_water_stamdec:

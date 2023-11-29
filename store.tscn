@@ -1,0 +1,510 @@
+[gd_scene load_steps=13 format=3 uid="uid://g0i3r41wi6n2"]
+
+[ext_resource type="Texture2D" uid="uid://dhnmdh5jgcqy0" path="res://art-assets/store_sprites/Storebackground_withMenu.png" id="1_jpg4d"]
+[ext_resource type="Script" path="res://store.gd" id="1_xwdh1"]
+[ext_resource type="Texture2D" uid="uid://bas68skx01omd" path="res://art-assets/pet-view-screen/backArrow1.png" id="2_88h8l"]
+[ext_resource type="Texture2D" uid="uid://b256p0gpcp5yl" path="res://art-assets/pet-view-screen/backArrow2.png" id="3_uxv8l"]
+[ext_resource type="Texture2D" uid="uid://3ai31aouy855" path="res://art-assets/store_sprites/Mouse.png" id="4_qo25i"]
+[ext_resource type="Texture2D" uid="uid://c3jonius4gs8h" path="res://art-assets/store_sprites/Bone.png" id="5_ukp2h"]
+[ext_resource type="Texture2D" uid="uid://py0rr1hoot1c" path="res://art-assets/store_sprites/Ball.png" id="6_e4hlx"]
+[ext_resource type="Texture2D" uid="uid://brse2mj460obr" path="res://art-assets/store_sprites/Barley.png" id="7_gu4px"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sjs0r"]
+line_spacing = 0.0
+font_size = 33
+
+[sub_resource type="LabelSettings" id="LabelSettings_k3tcd"]
+line_spacing = 0.0
+font_size = 33
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_t3f0s"]
+size = Vector2(30, 30)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lodwk"]
+font_size = 25
+
+[node name="Store" type="Node2D"]
+script = ExtResource("1_xwdh1")
+
+[node name="Background" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(180, 150)
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(5, 5)
+texture = ExtResource("1_jpg4d")
+stretch_mode = 4
+metadata/_edit_lock_ = true
+
+[node name="Back" type="TextureButton" parent="."]
+visible = false
+custom_minimum_size = Vector2(12, 12)
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 20.0
+offset_bottom = 20.0
+scale = Vector2(5, 5)
+texture_normal = ExtResource("2_88h8l")
+texture_pressed = ExtResource("3_uxv8l")
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+clip_contents = true
+offset_left = 64.0
+offset_top = 48.0
+offset_right = 858.0
+offset_bottom = 696.0
+theme_override_constants/separation = 3
+metadata/_edit_lock_ = true
+
+[node name="Funds" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(20, 55)
+layout_mode = 2
+
+[node name="FrontSpacer" type="ColorRect" parent="VBoxContainer/Funds"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Back2" type="Button" parent="VBoxContainer/Funds"]
+custom_minimum_size = Vector2(50, 40)
+layout_mode = 2
+size_flags_vertical = 4
+text = "Back"
+
+[node name="FrontSpacer2" type="ColorRect" parent="VBoxContainer/Funds"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="_lab available funds" type="Label" parent="VBoxContainer/Funds"]
+layout_mode = 2
+text = "Available Funds: $"
+label_settings = SubResource("LabelSettings_sjs0r")
+
+[node name="player_money" type="Label" parent="VBoxContainer/Funds"]
+layout_mode = 2
+text = "123456"
+label_settings = SubResource("LabelSettings_k3tcd")
+
+[node name="Top Separator" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+color = Color(0.215686, 0.305882, 0.290196, 1)
+
+[node name="Food Tier 1" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 9
+
+[node name="FrontSpacer" type="ColorRect" parent="VBoxContainer/Food Tier 1"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Image" type="TextureRect" parent="VBoxContainer/Food Tier 1"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_t3f0s")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Food Tier 1"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Product Name" type="Label" parent="VBoxContainer/Food Tier 1/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Kibble"
+label_settings = SubResource("LabelSettings_lodwk")
+
+[node name="Flavor Text" type="Label" parent="VBoxContainer/Food Tier 1/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Standard pet food. 
+It's almost tantalizing! (+10 hunger)"
+autowrap_mode = 3
+
+[node name="temp_buy" type="Button" parent="VBoxContainer/Food Tier 1"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "10G"
+
+[node name="Buy" type="TextureButton" parent="VBoxContainer/Food Tier 1"]
+visible = false
+layout_mode = 2
+
+[node name="BackSpacer" type="ColorRect" parent="VBoxContainer/Food Tier 1"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="ProductSep1" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Separator Bar" type="ColorRect" parent="VBoxContainer/ProductSep1"]
+custom_minimum_size = Vector2(770, 4)
+layout_mode = 2
+color = Color(0.215686, 0.305882, 0.290196, 1)
+metadata/_edit_lock_ = true
+
+[node name="Food Tier 2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 9
+
+[node name="FrontSpacer" type="ColorRect" parent="VBoxContainer/Food Tier 2"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Image" type="TextureRect" parent="VBoxContainer/Food Tier 2"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_t3f0s")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Food Tier 2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Product Name" type="Label" parent="VBoxContainer/Food Tier 2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Imported Fish"
+label_settings = SubResource("LabelSettings_lodwk")
+
+[node name="Flavor Text" type="Label" parent="VBoxContainer/Food Tier 2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Quality pet food.
+Sure to keep your pets begging for more! (+15 hunger)"
+autowrap_mode = 3
+
+[node name="temp_buy" type="Button" parent="VBoxContainer/Food Tier 2"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "20G"
+
+[node name="Buy" type="TextureButton" parent="VBoxContainer/Food Tier 2"]
+visible = false
+layout_mode = 2
+
+[node name="BackSpacer" type="ColorRect" parent="VBoxContainer/Food Tier 2"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="ProductSep2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Separator Bar" type="ColorRect" parent="VBoxContainer/ProductSep2"]
+custom_minimum_size = Vector2(770, 4)
+layout_mode = 2
+color = Color(0.215686, 0.305882, 0.290196, 1)
+metadata/_edit_lock_ = true
+
+[node name="Food Tier 3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 9
+
+[node name="FrontSpacer" type="ColorRect" parent="VBoxContainer/Food Tier 3"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Image" type="TextureRect" parent="VBoxContainer/Food Tier 3"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_t3f0s")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Food Tier 3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Product Name" type="Label" parent="VBoxContainer/Food Tier 3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Iberico Ham"
+label_settings = SubResource("LabelSettings_lodwk")
+
+[node name="Flavor Text" type="Label" parent="VBoxContainer/Food Tier 3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Gourmet Pet food.
+The best your money can buy! (+20 hunger)"
+
+[node name="temp_buy" type="Button" parent="VBoxContainer/Food Tier 3"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "50G"
+
+[node name="Buy" type="TextureButton" parent="VBoxContainer/Food Tier 3"]
+visible = false
+layout_mode = 2
+
+[node name="BackSpacer" type="ColorRect" parent="VBoxContainer/Food Tier 3"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="ProductSep3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Separator Bar" type="ColorRect" parent="VBoxContainer/ProductSep3"]
+custom_minimum_size = Vector2(770, 4)
+layout_mode = 2
+color = Color(0.215686, 0.305882, 0.290196, 1)
+metadata/_edit_lock_ = true
+
+[node name="Mouse" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 9
+
+[node name="FrontSpacer" type="ColorRect" parent="VBoxContainer/Mouse"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Image" type="TextureRect" parent="VBoxContainer/Mouse"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("4_qo25i")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Mouse"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Product Name" type="Label" parent="VBoxContainer/Mouse/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Grey Mouse"
+label_settings = SubResource("LabelSettings_lodwk")
+
+[node name="Flavor Text" type="Label" parent="VBoxContainer/Mouse/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "A common cat toy. Not recommended for fire breathers or pets with claws longer than 1 inch. (+5 Happiness)"
+autowrap_mode = 3
+
+[node name="temp_buy" type="Button" parent="VBoxContainer/Mouse"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "15G"
+
+[node name="Buy" type="TextureButton" parent="VBoxContainer/Mouse"]
+visible = false
+layout_mode = 2
+
+[node name="BackSpacer" type="ColorRect" parent="VBoxContainer/Mouse"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="ProductSep4" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Separator Bar" type="ColorRect" parent="VBoxContainer/ProductSep4"]
+custom_minimum_size = Vector2(770, 4)
+layout_mode = 2
+color = Color(0.215686, 0.305882, 0.290196, 1)
+metadata/_edit_lock_ = true
+
+[node name="Bone" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 9
+
+[node name="FrontSpacer" type="ColorRect" parent="VBoxContainer/Bone"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Image" type="TextureRect" parent="VBoxContainer/Bone"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("5_ukp2h")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Bone"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Product Name" type="Label" parent="VBoxContainer/Bone/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Bone"
+label_settings = SubResource("LabelSettings_lodwk")
+
+[node name="Flavor Text" type="Label" parent="VBoxContainer/Bone/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "The ideal chew toy. Sure to keep your pet salivating!
+(+10 Happiness)"
+autowrap_mode = 3
+
+[node name="temp_buy" type="Button" parent="VBoxContainer/Bone"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "30G"
+
+[node name="Buy" type="TextureButton" parent="VBoxContainer/Bone"]
+visible = false
+layout_mode = 2
+
+[node name="BackSpacer" type="ColorRect" parent="VBoxContainer/Bone"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="ProductSep5" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Separator Bar" type="ColorRect" parent="VBoxContainer/ProductSep5"]
+custom_minimum_size = Vector2(770, 4)
+layout_mode = 2
+color = Color(0.215686, 0.305882, 0.290196, 1)
+metadata/_edit_lock_ = true
+
+[node name="Yarn" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 9
+
+[node name="FrontSpacer" type="ColorRect" parent="VBoxContainer/Yarn"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Image" type="TextureRect" parent="VBoxContainer/Yarn"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("6_e4hlx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Yarn"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Product Name" type="Label" parent="VBoxContainer/Yarn/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Ball of Yarn"
+label_settings = SubResource("LabelSettings_lodwk")
+
+[node name="Flavor Text" type="Label" parent="VBoxContainer/Yarn/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Who doesn't love a ball to chase, unravel, and get all wrapped up in!
+(+ 15 Happiness)"
+autowrap_mode = 3
+
+[node name="temp_buy" type="Button" parent="VBoxContainer/Yarn"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "50G
+"
+
+[node name="Buy" type="TextureButton" parent="VBoxContainer/Yarn"]
+visible = false
+layout_mode = 2
+
+[node name="BackSpacer" type="ColorRect" parent="VBoxContainer/Yarn"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="ProductSep6" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Separator Bar" type="ColorRect" parent="VBoxContainer/ProductSep6"]
+custom_minimum_size = Vector2(770, 4)
+layout_mode = 2
+color = Color(0.215686, 0.305882, 0.290196, 1)
+metadata/_edit_lock_ = true
+
+[node name="Barley" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 9
+
+[node name="FrontSpacer" type="ColorRect" parent="VBoxContainer/Barley"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Image" type="TextureRect" parent="VBoxContainer/Barley"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("7_gu4px")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Barley"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Product Name" type="Label" parent="VBoxContainer/Barley/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Stuffed Barley Plush"
+label_settings = SubResource("LabelSettings_lodwk")
+
+[node name="Flavor Text" type="Label" parent="VBoxContainer/Barley/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "A quality stuffed plush for ultimate snuggles. Soothes even the most unhappy of pets. (+ 20 Happiness)"
+autowrap_mode = 3
+
+[node name="temp_buy" type="Button" parent="VBoxContainer/Barley"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "100G
+"
+
+[node name="Buy" type="TextureButton" parent="VBoxContainer/Barley"]
+visible = false
+layout_mode = 2
+
+[node name="BackSpacer" type="ColorRect" parent="VBoxContainer/Barley"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[connection signal="pressed" from="VBoxContainer/Funds/Back2" to="." method="_on_back_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/Food Tier 1/temp_buy" to="." method="_on_buy_food_T1"]
+[connection signal="pressed" from="VBoxContainer/Food Tier 2/temp_buy" to="." method="_on_buy_food_T2"]
+[connection signal="pressed" from="VBoxContainer/Food Tier 3/temp_buy" to="." method="_on_buy_food_T3"]
+[connection signal="pressed" from="VBoxContainer/Mouse/temp_buy" to="." method="_on_buy_mouse"]
+[connection signal="pressed" from="VBoxContainer/Bone/temp_buy" to="." method="_on_buy_bone"]
+[connection signal="pressed" from="VBoxContainer/Yarn/temp_buy" to="." method="_on_buy_yarn"]
+[connection signal="pressed" from="VBoxContainer/Barley/temp_buy" to="." method="_on_buy_barley"]

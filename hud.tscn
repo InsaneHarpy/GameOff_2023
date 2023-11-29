@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://17ali6nd4rgr"]
+[gd_scene load_steps=21 format=3 uid="uid://17ali6nd4rgr"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_1op7w"]
 [ext_resource type="Texture2D" uid="uid://0rjcnxrs8f6h" path="res://art-assets/kennel-screen/USEME/energy1.png" id="2_bhbv5"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://bb8ndunb3k8w7" path="res://art-assets/kennel-screen/USEME/SideArrows1.png" id="13_7k8rp"]
 [ext_resource type="Texture2D" uid="uid://c6bon5letx3ae" path="res://art-assets/kennel-screen/USEME/submenu4.png" id="13_14sx7"]
 [ext_resource type="Texture2D" uid="uid://0applu2bu56a" path="res://art-assets/kennel-screen/USEME/SideArrows2.png" id="14_8vgkn"]
+[ext_resource type="Texture2D" uid="uid://b6bqs0usyriwx" path="res://art-assets/kennel-screen/USEME/Shop1.png" id="14_kp267"]
+[ext_resource type="Texture2D" uid="uid://keji78qqvir2" path="res://art-assets/kennel-screen/USEME/Shop2.png" id="15_tbx54"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1lr4o"]
 font_size = 27
@@ -47,17 +49,17 @@ metadata/_edit_lock_ = true
 
 [node name="money" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(130, 60)
-offset_left = 385.0
+offset_left = 304.0
 offset_top = 592.0
-offset_right = 515.0
+offset_right = 434.0
 offset_bottom = 652.0
 texture = ExtResource("4_w1hkb")
 stretch_mode = 4
 
 [node name="Monies" type="Label" parent="money"]
 layout_mode = 0
-offset_left = -72.0
-offset_right = 230.0
+offset_left = 8.0
+offset_right = 128.0
 offset_bottom = 58.0
 text = "$$$ test"
 label_settings = SubResource("LabelSettings_1lr4o")
@@ -169,6 +171,17 @@ texture_pressed = ExtResource("14_8vgkn")
 stretch_mode = 4
 flip_h = true
 
+[node name="shop" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(17, 12)
+offset_left = 520.0
+offset_top = 592.0
+offset_right = 537.0
+offset_bottom = 604.0
+scale = Vector2(5, 5)
+texture_normal = ExtResource("14_kp267")
+texture_pressed = ExtResource("15_tbx54")
+
+[connection signal="mouse_entered" from="Next Day" to="." method="_on_next_day_mouse_entered"]
 [connection signal="pressed" from="Next Day" to="." method="_on_next_day_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Animal1" to="." method="_on_animal_1_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Animal2" to="." method="_on_animal_2_pressed"]
@@ -176,3 +189,4 @@ flip_h = true
 [connection signal="pressed" from="PanelContainer/VBoxContainer/available animals" to="." method="_on_available_animals_pressed"]
 [connection signal="pressed" from="Left_ScreenNav" to="." method="_on_left_screen_nav_pressed"]
 [connection signal="pressed" from="Right_ScreenNav" to="." method="_on_right_screen_nav_pressed"]
+[connection signal="pressed" from="shop" to="." method="_on_shop_pressed"]

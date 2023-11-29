@@ -14,6 +14,7 @@ var animal = null
 @export  var thirst : int = 0
 @export var hunger : int = 0
 @export var happiness : int = 0
+@export var toy : String = ""
 @export var empty : bool = true
 
 var _anim_pause = false
@@ -78,6 +79,7 @@ func update_animal(dict={}, kempty = false):
 		self.thirst = dict['thirst']
 		self.hunger = dict['hunger']
 		self.happiness = dict['happiness']
+		self.toy = dict['toy']
 		
 		if self.type in Global.animations.keys():
 			_animated_pet_sprite.play(Global.animations[self.type])

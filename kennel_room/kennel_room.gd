@@ -21,6 +21,7 @@ func _kennel_clicked(node):
 		Global.active_animal['thirst'] = node.thirst
 		Global.active_animal['hunger'] = node.hunger
 		Global.active_animal['happiness'] = node.happiness
+		Global.active_animal['toy'] = node.toy
 		
 		Global.active_kennel = node.KennelNo
 		Global.goto_scene("res://animals/animal_view.tscn")

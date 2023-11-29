@@ -1,11 +1,13 @@
-[gd_scene load_steps=23 format=3 uid="uid://c6os07eenikhl"]
+[gd_scene load_steps=20 format=3 uid="uid://c6os07eenikhl"]
 
 [ext_resource type="Script" path="res://animals/animal_view.gd" id="1_o2tut"]
 [ext_resource type="Texture2D" uid="uid://o36vuhve80kk" path="res://art-assets/kennel-screen/USEME/Bkgnd.png" id="2_udx7d"]
 [ext_resource type="Texture2D" uid="uid://dh2owhm036fkh" path="res://art-assets/pet-view-screen/Clipboard.png" id="3_a5j0k"]
 [ext_resource type="Texture2D" uid="uid://cktf71ov352u1" path="res://art-assets/pet-sprites/BlueDragon-sprite.png" id="4_6y6n5"]
 [ext_resource type="PackedScene" uid="uid://17ali6nd4rgr" path="res://hud.tscn" id="4_3586e"]
+[ext_resource type="Texture2D" uid="uid://bas68skx01omd" path="res://art-assets/pet-view-screen/backArrow1.png" id="5_hw33j"]
 [ext_resource type="Texture2D" uid="uid://dldtojjop2ois" path="res://art-assets/pet-sprites/Fox-sprite.png" id="5_qf2xf"]
+[ext_resource type="Texture2D" uid="uid://b256p0gpcp5yl" path="res://art-assets/pet-view-screen/backArrow2.png" id="6_rfedr"]
 [ext_resource type="Texture2D" uid="uid://5kn3d4iaolb" path="res://art-assets/pet-sprites/Gryphon-sprite.png" id="7_haag8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lbp87"]
@@ -13,21 +15,6 @@ font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_csxle"]
 font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0jxkl"]
-size = Vector2(20, 20)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_p5rfr"]
-size = Vector2(20, 20)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_abuqo"]
-size = Vector2(20, 20)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rwou4"]
-size = Vector2(20, 20)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_l1uwy"]
-size = Vector2(20, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ui831"]
 atlas = ExtResource("4_6y6n5")
@@ -218,13 +205,11 @@ text = "Approve Adoption"
 [node name="Back" type="TextureButton" parent="."]
 offset_left = 24.0
 offset_top = 24.0
-offset_right = 64.0
-offset_bottom = 64.0
-texture_normal = SubResource("PlaceholderTexture2D_0jxkl")
-texture_pressed = SubResource("PlaceholderTexture2D_p5rfr")
-texture_hover = SubResource("PlaceholderTexture2D_abuqo")
-texture_disabled = SubResource("PlaceholderTexture2D_rwou4")
-texture_focused = SubResource("PlaceholderTexture2D_l1uwy")
+offset_right = 36.0
+offset_bottom = 36.0
+scale = Vector2(5, 5)
+texture_normal = ExtResource("5_hw33j")
+texture_pressed = ExtResource("6_rfedr")
 stretch_mode = 0
 
 [node name="pet sprite" type="AnimatedSprite2D" parent="."]

@@ -194,4 +194,4 @@ text = "Happiness: 50 / 100"
 position = Vector2(7.62939e-06, 7.62939e-06)
 scale = Vector2(3.7, 3.7)
 sprite_frames = SubResource("SpriteFrames_hrypp")
-animation = &"gryphon"
+animation = &"fox"

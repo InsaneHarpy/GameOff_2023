@@ -12,7 +12,7 @@ func _ready():
 	get_node("PanelContainer/VBoxContainer/Animal2").visible = false
 	get_node("PanelContainer/VBoxContainer/Animal3").visible = false
 	get_node("PanelContainer/VBoxContainer/available animals").flip_v = false
-	
+
 	if Global.scene_path == "res://kennel_room/kennel_room.tscn":
 		get_node("Left_ScreenNav").visible = false
 		get_node("Right_ScreenNav").visible = false
@@ -36,6 +36,7 @@ func _process(delta):
 		get_node("PanelContainer/VBoxContainer/Animal3/Animal3 label").text = Global.available_animals[3]["name"]
 	else:
 		get_node("PanelContainer/VBoxContainer/Animal3/Animal3 label").text = "None"
+		
 		
 func update_energy(delta):
 	Global.player_energy += delta
@@ -152,3 +153,6 @@ func _on_right_screen_nav_pressed():
 	Global.active_kennel = Global.fullKennels[idx]
 	Global.active_animal = Global.current_animals[Global.active_kennel]
 	Global.emit_signal("scrollAnimal")
+
+func _on_shop_pressed():
+	Global.goto_scene("res://store.tscn")
