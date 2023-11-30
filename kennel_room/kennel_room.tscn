@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://br2netp27nhyg" path="res://kennel_room/kennel.tscn" id="1_ywjtv"]
 [ext_resource type="Texture2D" uid="uid://o36vuhve80kk" path="res://art-assets/kennel-screen/USEME/Bkgnd.png" id="2_505tc"]
 [ext_resource type="PackedScene" uid="uid://17ali6nd4rgr" path="res://hud.tscn" id="3_r4qfv"]
-[ext_resource type="AudioStream" uid="uid://cjugjqwu2h4qu" path="res://sounds/interaction_button1.mp3" id="5_ninq1"]
+[ext_resource type="AudioStream" uid="uid://crli6wlvuvojc" path="res://sounds/interaction_button2.mp3" id="5_kji2r"]
 
 [node name="kennel_room" type="Node2D"]
 script = ExtResource("1_8tavh")
@@ -49,4 +49,5 @@ KennelNo = 6
 metadata/_edit_lock_ = true
 
 [node name="buttonSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_ninq1")
+stream = ExtResource("5_kji2r")
+volume_db = 15.0

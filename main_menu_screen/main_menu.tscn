@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bbu431kra4d01" path="res://art-assets/title-screen/scaleSelection.png" id="6_5a3ph"]
 [ext_resource type="Texture2D" uid="uid://doiocb4krurda" path="res://art-assets/title-screen/quitBUttons1.png" id="6_my77w"]
 [ext_resource type="Texture2D" uid="uid://b150ej0jvkike" path="res://art-assets/title-screen/quitBUttons2.png" id="7_n0mnu"]
-[ext_resource type="AudioStream" uid="uid://cjugjqwu2h4qu" path="res://sounds/interaction_button1.mp3" id="9_t64ko"]
+[ext_resource type="AudioStream" uid="uid://crli6wlvuvojc" path="res://sounds/interaction_button2.mp3" id="9_5iudt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yyd8n"]
 atlas = ExtResource("3_efvqq")
@@ -140,7 +140,8 @@ stretch_mode = 4
 metadata/_edit_lock_ = true
 
 [node name="buttonSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("9_t64ko")
+stream = ExtResource("9_5iudt")
+volume_db = 15.0
 
 [connection signal="mouse_entered" from="Play" to="." method="_on_play_mouse_entered"]
 [connection signal="mouse_exited" from="Play" to="." method="_on_play_mouse_exited"]

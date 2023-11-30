@@ -170,6 +170,7 @@ func _on_left_screen_nav_pressed():
 #	print(Global.fullKennels[0])
 	$buttonSound.play()
 	await $buttonSound.finished
+	Global.current_animals[Global.active_kennel] = Global.active_animal
 	var idx = Global.fullKennels.find(Global.active_kennel, 0)
 	idx -= 1
 	if idx == -1:
@@ -184,6 +185,7 @@ func _on_right_screen_nav_pressed():
 #	print(Global.fullKennels[0])
 	$buttonSound.play()
 	await $buttonSound.finished
+	Global.current_animals[Global.active_kennel] = Global.active_animal
 	var idx = Global.fullKennels.find(Global.active_kennel, 0)
 	idx += 1
 	if idx == -1:
@@ -202,18 +204,21 @@ func _on_shop_pressed():
 
 ### Toggling buttons for food selection ###
 func _on_food_t1_toggled():
+	$buttonSound.play()
 	if Global.selected_food != 1:
 		Global.selected_food = 1
 	else:
 		Global.selected_food = 0
 
 func _on_food_t2_toggled():
+	$buttonSound.play()
 	if Global.selected_food != 2:
 		Global.selected_food = 2
 	else:
 		Global.selected_food = 0
 
 func _on_food_t3_toggled():
+	$buttonSound.play()
 	if Global.selected_food != 3:
 		Global.selected_food = 3
 	else:

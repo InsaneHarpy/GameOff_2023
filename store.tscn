@@ -1,15 +1,18 @@
-[gd_scene load_steps=15 format=3 uid="uid://g0i3r41wi6n2"]
+[gd_scene load_steps=18 format=3 uid="uid://g0i3r41wi6n2"]
 
 [ext_resource type="Texture2D" uid="uid://dhnmdh5jgcqy0" path="res://art-assets/store_sprites/Storebackground_withMenu.png" id="1_jpg4d"]
 [ext_resource type="Script" path="res://store.gd" id="1_xwdh1"]
-[ext_resource type="Texture2D" uid="uid://bas68skx01omd" path="res://art-assets/pet-view-screen/backArrow1.png" id="2_88h8l"]
-[ext_resource type="Texture2D" uid="uid://b256p0gpcp5yl" path="res://art-assets/pet-view-screen/backArrow2.png" id="3_uxv8l"]
 [ext_resource type="Texture2D" uid="uid://3ai31aouy855" path="res://art-assets/store_sprites/Mouse.png" id="4_qo25i"]
 [ext_resource type="Texture2D" uid="uid://b7cpfbf50w37m" path="res://art-assets/foods/kibble.png" id="5_8tacm"]
 [ext_resource type="Texture2D" uid="uid://c3jonius4gs8h" path="res://art-assets/store_sprites/Bone.png" id="5_ukp2h"]
 [ext_resource type="Texture2D" uid="uid://py0rr1hoot1c" path="res://art-assets/store_sprites/Ball.png" id="6_e4hlx"]
+[ext_resource type="Texture2D" uid="uid://clsf68llea7rt" path="res://art-assets/store_sprites/StoreButton_AVAILABLE.png" id="6_foof6"]
 [ext_resource type="Texture2D" uid="uid://brse2mj460obr" path="res://art-assets/store_sprites/Barley.png" id="7_gu4px"]
-[ext_resource type="AudioStream" uid="uid://cjugjqwu2h4qu" path="res://sounds/interaction_button1.mp3" id="9_djus0"]
+[ext_resource type="Texture2D" uid="uid://c3r1mgh16kwb7" path="res://art-assets/store_sprites/StoreButton_CLICKED.png" id="7_pjb4e"]
+[ext_resource type="Texture2D" uid="uid://ev8sqrto8bgp" path="res://art-assets/store_sprites/StoreButton_DISSABLED.png" id="8_vl0jy"]
+[ext_resource type="Texture2D" uid="uid://c7gfoptr0helx" path="res://art-assets/foods/fish.png" id="9_bham8"]
+[ext_resource type="Texture2D" uid="uid://d2dypyd5npd4y" path="res://art-assets/foods/ham.png" id="10_adwvu"]
+[ext_resource type="AudioStream" uid="uid://crli6wlvuvojc" path="res://sounds/interaction_button2.mp3" id="13_hi08x"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sjs0r"]
 line_spacing = 0.0
@@ -22,8 +25,9 @@ font_size = 33
 [sub_resource type="LabelSettings" id="LabelSettings_lodwk"]
 font_size = 25
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_t3f0s"]
-size = Vector2(30, 30)
+[sub_resource type="LabelSettings" id="LabelSettings_6wpjl"]
+line_spacing = 0.0
+font_size = 44
 
 [node name="Store" type="Node2D"]
 script = ExtResource("1_xwdh1")
@@ -35,18 +39,6 @@ offset_bottom = 40.0
 scale = Vector2(5, 5)
 texture = ExtResource("1_jpg4d")
 stretch_mode = 4
-metadata/_edit_lock_ = true
-
-[node name="Back" type="TextureButton" parent="."]
-visible = false
-custom_minimum_size = Vector2(12, 12)
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 20.0
-offset_bottom = 20.0
-scale = Vector2(5, 5)
-texture_normal = ExtResource("2_88h8l")
-texture_pressed = ExtResource("3_uxv8l")
 metadata/_edit_lock_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -67,14 +59,25 @@ custom_minimum_size = Vector2(15, 0)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
-[node name="Back2" type="Button" parent="VBoxContainer/Funds"]
-custom_minimum_size = Vector2(50, 40)
+[node name="Back" type="TextureButton" parent="VBoxContainer/Funds"]
+custom_minimum_size = Vector2(60, 40)
 layout_mode = 2
-size_flags_vertical = 4
+texture_normal = ExtResource("6_foof6")
+texture_pressed = ExtResource("7_pjb4e")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="VBoxContainer/Funds/Back"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 14.0
+offset_right = 57.0
+offset_bottom = 41.0
 text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="FrontSpacer2" type="ColorRect" parent="VBoxContainer/Funds"]
-custom_minimum_size = Vector2(20, 0)
+custom_minimum_size = Vector2(15, 0)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
@@ -128,15 +131,25 @@ text = "Standard pet food.
 It's almost tantalizing! (+10 hunger)"
 autowrap_mode = 3
 
-[node name="temp_buy" type="Button" parent="VBoxContainer/Food Tier 1"]
+[node name="Buy" type="TextureButton" parent="VBoxContainer/Food Tier 1"]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
+texture_normal = ExtResource("6_foof6")
+texture_pressed = ExtResource("7_pjb4e")
+texture_disabled = ExtResource("8_vl0jy")
+stretch_mode = 5
+
+[node name="Price" type="Label" parent="VBoxContainer/Food Tier 1/Buy"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 9.0
+offset_right = 118.0
+offset_bottom = 65.0
 theme_override_font_sizes/font_size = 44
 text = "10G"
-
-[node name="Buy" type="TextureButton" parent="VBoxContainer/Food Tier 1"]
-visible = false
-layout_mode = 2
+label_settings = SubResource("LabelSettings_6wpjl")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BackSpacer" type="ColorRect" parent="VBoxContainer/Food Tier 1"]
 custom_minimum_size = Vector2(10, 0)
@@ -166,9 +179,9 @@ color = Color(1, 1, 1, 0)
 [node name="Image" type="TextureRect" parent="VBoxContainer/Food Tier 2"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_t3f0s")
+texture = ExtResource("9_bham8")
 expand_mode = 2
-stretch_mode = 4
+stretch_mode = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Food Tier 2"]
 layout_mode = 2
@@ -188,15 +201,24 @@ text = "Quality pet food.
 Sure to keep your pets begging for more! (+15 hunger)"
 autowrap_mode = 3
 
-[node name="temp_buy" type="Button" parent="VBoxContainer/Food Tier 2"]
+[node name="Buy" type="TextureButton" parent="VBoxContainer/Food Tier 2"]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
+texture_normal = ExtResource("6_foof6")
+texture_pressed = ExtResource("7_pjb4e")
+texture_disabled = ExtResource("8_vl0jy")
+stretch_mode = 5
+
+[node name="Price" type="Label" parent="VBoxContainer/Food Tier 2/Buy"]
+offset_left = 7.0
+offset_top = 9.0
+offset_right = 118.0
+offset_bottom = 65.0
 theme_override_font_sizes/font_size = 44
 text = "20G"
-
-[node name="Buy" type="TextureButton" parent="VBoxContainer/Food Tier 2"]
-visible = false
-layout_mode = 2
+label_settings = SubResource("LabelSettings_6wpjl")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BackSpacer" type="ColorRect" parent="VBoxContainer/Food Tier 2"]
 custom_minimum_size = Vector2(10, 0)
@@ -226,9 +248,9 @@ color = Color(1, 1, 1, 0)
 [node name="Image" type="TextureRect" parent="VBoxContainer/Food Tier 3"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_t3f0s")
+texture = ExtResource("10_adwvu")
 expand_mode = 2
-stretch_mode = 4
+stretch_mode = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Food Tier 3"]
 layout_mode = 2
@@ -247,15 +269,24 @@ size_flags_vertical = 3
 text = "Gourmet Pet food.
 The best your money can buy! (+20 hunger)"
 
-[node name="temp_buy" type="Button" parent="VBoxContainer/Food Tier 3"]
+[node name="Buy" type="TextureButton" parent="VBoxContainer/Food Tier 3"]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
+texture_normal = ExtResource("6_foof6")
+texture_pressed = ExtResource("7_pjb4e")
+texture_disabled = ExtResource("8_vl0jy")
+stretch_mode = 5
+
+[node name="Price" type="Label" parent="VBoxContainer/Food Tier 3/Buy"]
+offset_left = 7.0
+offset_top = 9.0
+offset_right = 118.0
+offset_bottom = 65.0
 theme_override_font_sizes/font_size = 44
 text = "50G"
-
-[node name="Buy" type="TextureButton" parent="VBoxContainer/Food Tier 3"]
-visible = false
-layout_mode = 2
+label_settings = SubResource("LabelSettings_6wpjl")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BackSpacer" type="ColorRect" parent="VBoxContainer/Food Tier 3"]
 custom_minimum_size = Vector2(10, 0)
@@ -306,15 +337,24 @@ size_flags_vertical = 3
 text = "A common cat toy. Not recommended for fire breathers or pets with claws longer than 1 inch. (+5 Happiness)"
 autowrap_mode = 3
 
-[node name="temp_buy" type="Button" parent="VBoxContainer/Mouse"]
+[node name="Buy" type="TextureButton" parent="VBoxContainer/Mouse"]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
+texture_normal = ExtResource("6_foof6")
+texture_pressed = ExtResource("7_pjb4e")
+texture_disabled = ExtResource("8_vl0jy")
+stretch_mode = 5
+
+[node name="Price" type="Label" parent="VBoxContainer/Mouse/Buy"]
+offset_left = 7.0
+offset_top = 9.0
+offset_right = 118.0
+offset_bottom = 65.0
 theme_override_font_sizes/font_size = 44
 text = "15G"
-
-[node name="Buy" type="TextureButton" parent="VBoxContainer/Mouse"]
-visible = false
-layout_mode = 2
+label_settings = SubResource("LabelSettings_6wpjl")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BackSpacer" type="ColorRect" parent="VBoxContainer/Mouse"]
 custom_minimum_size = Vector2(10, 0)
@@ -366,15 +406,24 @@ text = "The ideal chew toy. Sure to keep your pet salivating!
 (+10 Happiness)"
 autowrap_mode = 3
 
-[node name="temp_buy" type="Button" parent="VBoxContainer/Bone"]
+[node name="Buy" type="TextureButton" parent="VBoxContainer/Bone"]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
+texture_normal = ExtResource("6_foof6")
+texture_pressed = ExtResource("7_pjb4e")
+texture_disabled = ExtResource("8_vl0jy")
+stretch_mode = 5
+
+[node name="Price" type="Label" parent="VBoxContainer/Bone/Buy"]
+offset_left = 7.0
+offset_top = 9.0
+offset_right = 118.0
+offset_bottom = 65.0
 theme_override_font_sizes/font_size = 44
 text = "30G"
-
-[node name="Buy" type="TextureButton" parent="VBoxContainer/Bone"]
-visible = false
-layout_mode = 2
+label_settings = SubResource("LabelSettings_6wpjl")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BackSpacer" type="ColorRect" parent="VBoxContainer/Bone"]
 custom_minimum_size = Vector2(10, 0)
@@ -426,16 +475,24 @@ text = "Who doesn't love a ball to chase, unravel, and get all wrapped up in!
 (+ 15 Happiness)"
 autowrap_mode = 3
 
-[node name="temp_buy" type="Button" parent="VBoxContainer/Yarn"]
+[node name="Buy" type="TextureButton" parent="VBoxContainer/Yarn"]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 44
-text = "50G
-"
+texture_normal = ExtResource("6_foof6")
+texture_pressed = ExtResource("7_pjb4e")
+texture_disabled = ExtResource("8_vl0jy")
+stretch_mode = 5
 
-[node name="Buy" type="TextureButton" parent="VBoxContainer/Yarn"]
-visible = false
-layout_mode = 2
+[node name="Price" type="Label" parent="VBoxContainer/Yarn/Buy"]
+offset_left = 7.0
+offset_top = 9.0
+offset_right = 118.0
+offset_bottom = 65.0
+theme_override_font_sizes/font_size = 44
+text = "50G"
+label_settings = SubResource("LabelSettings_6wpjl")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BackSpacer" type="ColorRect" parent="VBoxContainer/Yarn"]
 custom_minimum_size = Vector2(10, 0)
@@ -486,16 +543,24 @@ size_flags_vertical = 3
 text = "A quality stuffed plush for ultimate snuggles. Soothes even the most unhappy of pets. (+ 20 Happiness)"
 autowrap_mode = 3
 
-[node name="temp_buy" type="Button" parent="VBoxContainer/Barley"]
+[node name="Buy" type="TextureButton" parent="VBoxContainer/Barley"]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 44
-text = "100G
-"
+texture_normal = ExtResource("6_foof6")
+texture_pressed = ExtResource("7_pjb4e")
+texture_disabled = ExtResource("8_vl0jy")
+stretch_mode = 5
 
-[node name="Buy" type="TextureButton" parent="VBoxContainer/Barley"]
-visible = false
-layout_mode = 2
+[node name="Price" type="Label" parent="VBoxContainer/Barley/Buy"]
+offset_left = 7.0
+offset_top = 9.0
+offset_right = 118.0
+offset_bottom = 65.0
+theme_override_font_sizes/font_size = 44
+text = "100G"
+label_settings = SubResource("LabelSettings_6wpjl")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BackSpacer" type="ColorRect" parent="VBoxContainer/Barley"]
 custom_minimum_size = Vector2(10, 0)
@@ -503,13 +568,14 @@ layout_mode = 2
 color = Color(1, 1, 1, 0)
 
 [node name="buttonSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("9_djus0")
+stream = ExtResource("13_hi08x")
+volume_db = 15.0
 
-[connection signal="pressed" from="VBoxContainer/Funds/Back2" to="." method="_on_back_2_pressed"]
-[connection signal="pressed" from="VBoxContainer/Food Tier 1/temp_buy" to="." method="_on_buy_food_T1"]
-[connection signal="pressed" from="VBoxContainer/Food Tier 2/temp_buy" to="." method="_on_buy_food_T2"]
-[connection signal="pressed" from="VBoxContainer/Food Tier 3/temp_buy" to="." method="_on_buy_food_T3"]
-[connection signal="pressed" from="VBoxContainer/Mouse/temp_buy" to="." method="_on_buy_mouse"]
-[connection signal="pressed" from="VBoxContainer/Bone/temp_buy" to="." method="_on_buy_bone"]
-[connection signal="pressed" from="VBoxContainer/Yarn/temp_buy" to="." method="_on_buy_yarn"]
-[connection signal="pressed" from="VBoxContainer/Barley/temp_buy" to="." method="_on_buy_barley"]
+[connection signal="pressed" from="VBoxContainer/Funds/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="VBoxContainer/Food Tier 1/Buy" to="." method="_on_buy_food_T1"]
+[connection signal="pressed" from="VBoxContainer/Food Tier 2/Buy" to="." method="_on_buy_food_T2"]
+[connection signal="pressed" from="VBoxContainer/Food Tier 3/Buy" to="." method="_on_buy_food_T3"]
+[connection signal="pressed" from="VBoxContainer/Mouse/Buy" to="." method="_on_buy_mouse"]
+[connection signal="pressed" from="VBoxContainer/Bone/Buy" to="." method="_on_buy_bone"]
+[connection signal="pressed" from="VBoxContainer/Yarn/Buy" to="." method="_on_buy_yarn"]
+[connection signal="pressed" from="VBoxContainer/Barley/Buy" to="." method="_on_buy_barley"]

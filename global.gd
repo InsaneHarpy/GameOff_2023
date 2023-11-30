@@ -13,33 +13,33 @@ var fade : bool = false
 
 var active_kennel : int = -1
 var active_animal = {}
-var fullKennels = [1,2,3]
+var fullKennels = [1]#,2,3]
 var maxKennels : int = 6
 
-var current_animals = {1: {'name': 'Spyro',
+var current_animals = {1: {'name': 'Paparino',
 						   'type': 'Dragon',
 						   'adoptability': 75,
 						   'health': 25,
 						   'thirst': 10,
 						   'hunger': 10,
 						   'happiness': 0,
-						   'toy': ''},
-						2: {'name': 'Winnie',
-						   'type': 'Nine Tailed Fox',
-						   'adoptability': 75,
-						   'health': 25,
-						   'thirst': 10,
-						   'hunger': 10,
-						   'happiness': 0,
-						   'toy': ''},
-						3: {'name': 'Jabu',
-						   'type': 'Griffin',
-						   'adoptability': 75,
-						   'health': 25,
-						   'thirst': 10,
-						   'hunger': 10,
-						   'happiness': 0,
 						   'toy': ''}
+#						2: {'name': 'Winnie',
+#						   'type': 'Nine Tailed Fox',
+#						   'adoptability': 75,
+#						   'health': 25,
+#						   'thirst': 10,
+#						   'hunger': 10,
+#						   'happiness': 0,
+#						   'toy': ''},
+#						3: {'name': 'Jabu',
+#						   'type': 'Griffin',
+#						   'adoptability': 75,
+#						   'health': 25,
+#						   'thirst': 10,
+#						   'hunger': 10,
+#						   'happiness': 0,
+#						   'toy': ''}
 						}
 
 ##### Animals that can be brought into shelter #######
@@ -53,8 +53,8 @@ var name_array
 var type_array
 
 ########## Player stats #########
-var player_energy : int = 50
-var player_money : int = 500
+var player_energy : int = 100
+var player_money : int = 100
 var selected_food : int = 1
 
 var player_inventory = {'foodT1' : 0,
@@ -77,6 +77,11 @@ var click_water_stamdec : int = 10
 
 var click_play_petinc : int = 10
 var click_play_stamdec : int = 10
+
+var toy_happiness_inc = {'mouse' : 5,
+						 'bone' : 10,
+						 'yarn' : 15,
+						 'barley' : 20}
 
 ##### Store Prices ######
 var foodT1_price : int = 10
@@ -223,6 +228,13 @@ func advance_day():
 			self.current_animals[key]['happiness'] += randi()%10 + 1
 		
 		#########
+		
+		# check if pet has toy, increase happiness
+		
+		if self.current_animals[key]['toy'] != "":
+			self.current_animals[key]['happiness'] += self.toy_happiness_inc[self.current_animals[key]['toy']]
+		
+		########
 		
 		# how does pet adoptability increase?
 		if self.current_animals[key]['happiness'] > 75:

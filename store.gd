@@ -3,13 +3,13 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	## Fill in item prices based upon global values
-	$"VBoxContainer/Food Tier 1/temp_buy".text = str(Global.foodT1_price)+"G"
-	$"VBoxContainer/Food Tier 2/temp_buy".text = str(Global.foodT2_price)+"G"
-	$"VBoxContainer/Food Tier 3/temp_buy".text = str(Global.foodT3_price)+"G"
-	$VBoxContainer/Mouse/temp_buy.text = str(Global.mouse_price)+"G"
-	$VBoxContainer/Bone/temp_buy.text = str(Global.bone_price)+"G"
-	$VBoxContainer/Yarn/temp_buy.text = str(Global.yarn_price)+"G"
-	$VBoxContainer/Barley/temp_buy.text = str(Global.barley_price)+"G"
+	$"VBoxContainer/Food Tier 1/Buy/Price".text = "$"+str(Global.foodT1_price)#+"G"
+	$"VBoxContainer/Food Tier 2/Buy/Price".text = "$"+str(Global.foodT2_price)#+"G"
+	$"VBoxContainer/Food Tier 3/Buy/Price".text = "$"+str(Global.foodT3_price)#+"G"
+	$VBoxContainer/Mouse/Buy/Price.text = "$"+str(Global.mouse_price)#+"G"
+	$VBoxContainer/Bone/Buy/Price.text = "$"+str(Global.bone_price)#+"G"
+	$VBoxContainer/Yarn/Buy/Price.text = "$"+str(Global.yarn_price)#+"G"
+	$VBoxContainer/Barley/Buy/Price.text = "$"+str(Global.barley_price)#+"G"
 	
 func _process(delta):
 	### Keep Player money up to date
@@ -17,36 +17,35 @@ func _process(delta):
 	
 	# if cant afford disable button
 	if Global.player_money < Global.foodT1_price:
-		$"VBoxContainer/Food Tier 1/temp_buy".disabled = true
+		$"VBoxContainer/Food Tier 1/Buy".disabled = true
 	else:
-		$"VBoxContainer/Food Tier 1/temp_buy".disabled = false
+		$"VBoxContainer/Food Tier 1/Buy".disabled = false
 	if Global.player_money < Global.foodT2_price:
-		$"VBoxContainer/Food Tier 2/temp_buy".disabled = true
+		$"VBoxContainer/Food Tier 2/Buy".disabled = true
 	else:
-		$"VBoxContainer/Food Tier 2/temp_buy".disabled = false
+		$"VBoxContainer/Food Tier 2/Buy".disabled = false
 	if Global.player_money < Global.foodT3_price:
-		$"VBoxContainer/Food Tier 3/temp_buy".disabled = true
+		$"VBoxContainer/Food Tier 3/Buy".disabled = true
 	else:
-		$"VBoxContainer/Food Tier 3/temp_buy".disabled = false
+		$"VBoxContainer/Food Tier 3/Buy".disabled = false
 	if Global.player_money < Global.mouse_price:
-		$VBoxContainer/Mouse/temp_buy.disabled = true
+		$VBoxContainer/Mouse/Buy.disabled = true
 	else:
-		$VBoxContainer/Mouse/temp_buy.disabled = false
+		$VBoxContainer/Mouse/Buy.disabled = false
 	if Global.player_money < Global.bone_price:
-		$VBoxContainer/Bone/temp_buy.disabled = true
+		$VBoxContainer/Bone/Buy.disabled = true
 	else:
-		$VBoxContainer/Bone/temp_buy.disabled = false
+		$VBoxContainer/Bone/Buy.disabled = false
 	if Global.player_money < Global.yarn_price:
-		$VBoxContainer/Yarn/temp_buy.disabled = true
+		$VBoxContainer/Yarn/Buy.disabled = true
 	else:
-		$VBoxContainer/Yarn/temp_buy.disabled = false
+		$VBoxContainer/Yarn/Buy.disabled = false
 	if Global.player_money < Global.barley_price:
-		$VBoxContainer/Barley/temp_buy.disabled = true
+		$VBoxContainer/Barley/Buy.disabled = true
 	else:
-		$VBoxContainer/Barley/temp_buy.disabled = false
+		$VBoxContainer/Barley/Buy.disabled = false
 
-func _on_back_2_pressed():
-	
+func _on_back_pressed():
 	# Apparently you can't have a function await and then use goto_scene...
 	# Await has to be before the function you are awaiting
 	$buttonSound.play()
