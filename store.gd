@@ -46,10 +46,16 @@ func _process(delta):
 		$VBoxContainer/Barley/temp_buy.disabled = false
 
 func _on_back_2_pressed():
+	
+	# Apparently you can't have a function await and then use goto_scene...
+	# Await has to be before the function you are awaiting
+	$buttonSound.play()
+	await $buttonSound.finished
 	Global.goto_scene(Global.prev_scene)
 
 func _on_buy_food_T1():
 	if Global.player_money >= Global.foodT1_price:
+		$buttonSound.play()
 		Global.player_money -= Global.foodT1_price
 		Global.player_inventory['foodT1'] += 1
 		print_debug("T1 Food in inventory: ", Global.player_inventory['foodT1'])
@@ -58,6 +64,7 @@ func _on_buy_food_T1():
 
 func _on_buy_food_T2():
 	if Global.player_money >= Global.foodT2_price:
+		$buttonSound.play()
 		Global.player_money -= Global.foodT2_price
 		Global.player_inventory['foodT2'] += 1
 		print_debug("T2 Food in inventory: ", Global.player_inventory['foodT2'])
@@ -66,6 +73,7 @@ func _on_buy_food_T2():
 
 func _on_buy_food_T3():
 	if Global.player_money >= Global.foodT3_price:
+		$buttonSound.play()
 		Global.player_money -= Global.foodT3_price
 		Global.player_inventory['foodT3'] += 1
 		print_debug("T3 Food in inventory: ", Global.player_inventory['foodT3'])
@@ -74,6 +82,7 @@ func _on_buy_food_T3():
 
 func _on_buy_mouse():
 	if Global.player_money >= Global.mouse_price:
+		$buttonSound.play()
 		Global.player_money -= Global.mouse_price
 		Global.player_inventory['mouse'] += 1
 		print_debug("Number toy mouse in inventory: ", Global.player_inventory['mouse'])
@@ -82,6 +91,7 @@ func _on_buy_mouse():
 
 func _on_buy_bone():
 	if Global.player_money >= Global.bone_price:
+		$buttonSound.play()
 		Global.player_money -= Global.bone_price
 		Global.player_inventory['bone'] += 1
 		print_debug("Number toy bone in inventory: ", Global.player_inventory['bone'])
@@ -90,6 +100,7 @@ func _on_buy_bone():
 
 func _on_buy_yarn():
 	if Global.player_money >= Global.yarn_price:
+		$buttonSound.play()
 		Global.player_money -= Global.yarn_price
 		Global.player_inventory['yarn'] += 1
 		print_debug("Number toy yarn in inventory: ", Global.player_inventory['yarn'])
@@ -98,6 +109,7 @@ func _on_buy_yarn():
 
 func _on_buy_barley():
 	if Global.player_money >= Global.barley_price:
+		$buttonSound.play()
 		Global.player_money -= Global.barley_price
 		Global.player_inventory['barley'] += 1
 		print_debug("Number toy barley in inventory: ", Global.player_inventory['barley'])

@@ -14,6 +14,7 @@ func setup_kennels():
 	
 func _kennel_clicked(node):
 	if not node.empty:
+		
 		Global.active_animal['name'] = node.animalName
 		Global.active_animal['type'] = node.type
 		Global.active_animal['adoptability'] = node.adoptability
@@ -24,7 +25,10 @@ func _kennel_clicked(node):
 		Global.active_animal['toy'] = node.toy
 		
 		Global.active_kennel = node.KennelNo
+		
+		$buttonSound.play()
+		await $buttonSound.finished
 		Global.goto_scene("res://animals/animal_view.tscn")
 	else:
-		print("empty kennel")
+		print_debug("empty kennel")
 

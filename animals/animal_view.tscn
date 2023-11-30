@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c6os07eenikhl"]
+[gd_scene load_steps=22 format=3 uid="uid://c6os07eenikhl"]
 
 [ext_resource type="Script" path="res://animals/animal_view.gd" id="1_o2tut"]
 [ext_resource type="Texture2D" uid="uid://o36vuhve80kk" path="res://art-assets/kennel-screen/USEME/Bkgnd.png" id="2_udx7d"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://dldtojjop2ois" path="res://art-assets/pet-sprites/Fox-sprite.png" id="5_qf2xf"]
 [ext_resource type="Texture2D" uid="uid://b256p0gpcp5yl" path="res://art-assets/pet-view-screen/backArrow2.png" id="6_rfedr"]
 [ext_resource type="Texture2D" uid="uid://5kn3d4iaolb" path="res://art-assets/pet-sprites/Gryphon-sprite.png" id="7_haag8"]
+[ext_resource type="AudioStream" uid="uid://cjugjqwu2h4qu" path="res://sounds/interaction_button1.mp3" id="10_3udxp"]
+[ext_resource type="AudioStream" uid="uid://bqfjdhuwhx1mo" path="res://sounds/interaction_kennel1.mp3" id="11_53nrk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lbp87"]
 font_color = Color(0, 0, 0, 1)
@@ -216,7 +218,13 @@ stretch_mode = 0
 position = Vector2(704, 320)
 scale = Vector2(6.47222, 6.47222)
 sprite_frames = SubResource("SpriteFrames_b0vbh")
-animation = &"gryphon"
+animation = &"blue dragon"
+
+[node name="buttonSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_3udxp")
+
+[node name="kennelOpenSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_53nrk")
 
 [connection signal="pressed" from="Feed" to="." method="_on_feed_pressed"]
 [connection signal="pressed" from="Water" to="." method="_on_water_pressed"]

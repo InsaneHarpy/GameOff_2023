@@ -1,9 +1,13 @@
 extends Node2D
 
 func _on_quit_pressed():
+	$buttonSound.play()
+	await $buttonSound.finished
 	get_tree().quit()
 
 func _on_play_pressed():
+	$buttonSound.play()
+	await $buttonSound.finished
 	Global.goto_scene("res://kennel_room/kennel_room.tscn")
 
 

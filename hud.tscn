@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://17ali6nd4rgr"]
+[gd_scene load_steps=28 format=3 uid="uid://17ali6nd4rgr"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_1op7w"]
 [ext_resource type="Texture2D" uid="uid://0rjcnxrs8f6h" path="res://art-assets/kennel-screen/USEME/energy1.png" id="2_bhbv5"]
@@ -15,6 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://0applu2bu56a" path="res://art-assets/kennel-screen/USEME/SideArrows2.png" id="14_8vgkn"]
 [ext_resource type="Texture2D" uid="uid://b6bqs0usyriwx" path="res://art-assets/kennel-screen/USEME/Shop1.png" id="14_kp267"]
 [ext_resource type="Texture2D" uid="uid://keji78qqvir2" path="res://art-assets/kennel-screen/USEME/Shop2.png" id="15_tbx54"]
+[ext_resource type="AudioStream" uid="uid://cjugjqwu2h4qu" path="res://sounds/interaction_button1.mp3" id="16_nywiy"]
+[ext_resource type="AudioStream" uid="uid://o6hgjqrak5b7" path="res://sounds/interaction_kennel2.mp3" id="17_x46sc"]
+[ext_resource type="Texture2D" uid="uid://bo6428mj44udu" path="res://art-assets/kennel-screen/USEME/GenericBox1.png" id="18_khqog"]
+[ext_resource type="Texture2D" uid="uid://dsqrbib4t5lfb" path="res://art-assets/kennel-screen/USEME/SelectGenericBox1.png" id="19_os2f4"]
+[ext_resource type="Texture2D" uid="uid://b7cpfbf50w37m" path="res://art-assets/foods/kibble.png" id="20_uu0l1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1lr4o"]
 font_size = 27
@@ -32,6 +37,10 @@ font = ExtResource("9_dhsty")
 [sub_resource type="LabelSettings" id="LabelSettings_o0wru"]
 line_spacing = 0.0
 font = ExtResource("9_dhsty")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_spjge"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_adsoa"]
 
 [node name="HUD" type="CanvasGroup"]
 script = ExtResource("1_1op7w")
@@ -181,6 +190,95 @@ scale = Vector2(5, 5)
 texture_normal = ExtResource("14_kp267")
 texture_pressed = ExtResource("15_tbx54")
 
+[node name="Food Options" type="HBoxContainer" parent="."]
+offset_left = 568.0
+offset_top = 24.0
+offset_right = 822.0
+offset_bottom = 106.0
+
+[node name="Food_T1" type="TextureButton" parent="Food Options"]
+custom_minimum_size = Vector2(82, 82)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("18_khqog")
+texture_pressed = ExtResource("19_os2f4")
+stretch_mode = 4
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Food Options/Food_T1"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 24.0
+offset_right = 71.0
+offset_bottom = 72.0
+texture = ExtResource("20_uu0l1")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="Food Options/Food_T1"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 23.0
+text = "123456"
+horizontal_alignment = 1
+
+[node name="Food_T2" type="TextureButton" parent="Food Options"]
+custom_minimum_size = Vector2(82, 82)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("18_khqog")
+texture_pressed = ExtResource("19_os2f4")
+stretch_mode = 4
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Food Options/Food_T2"]
+offset_left = 8.0
+offset_top = 24.0
+offset_right = 72.0
+offset_bottom = 72.0
+texture = SubResource("PlaceholderTexture2D_spjge")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="Food Options/Food_T2"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 23.0
+text = "123456"
+horizontal_alignment = 1
+
+[node name="Food_T3" type="TextureButton" parent="Food Options"]
+custom_minimum_size = Vector2(82, 82)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("18_khqog")
+texture_pressed = ExtResource("19_os2f4")
+stretch_mode = 4
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Food Options/Food_T3"]
+offset_left = 8.0
+offset_top = 24.0
+offset_right = 72.0
+offset_bottom = 72.0
+texture = SubResource("PlaceholderTexture2D_adsoa")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="Food Options/Food_T3"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 23.0
+text = "123456"
+horizontal_alignment = 1
+
+[node name="buttonSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_nywiy")
+
+[node name="kennelClosedSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_x46sc")
+
 [connection signal="mouse_entered" from="Next Day" to="." method="_on_next_day_mouse_entered"]
 [connection signal="pressed" from="Next Day" to="." method="_on_next_day_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Animal1" to="." method="_on_animal_1_pressed"]
@@ -190,3 +288,6 @@ texture_pressed = ExtResource("15_tbx54")
 [connection signal="pressed" from="Left_ScreenNav" to="." method="_on_left_screen_nav_pressed"]
 [connection signal="pressed" from="Right_ScreenNav" to="." method="_on_right_screen_nav_pressed"]
 [connection signal="pressed" from="shop" to="." method="_on_shop_pressed"]
+[connection signal="pressed" from="Food Options/Food_T1" to="." method="_on_food_t1_toggled"]
+[connection signal="pressed" from="Food Options/Food_T2" to="." method="_on_food_t2_toggled"]
+[connection signal="pressed" from="Food Options/Food_T3" to="." method="_on_food_t3_toggled"]

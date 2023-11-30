@@ -1,13 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://g0i3r41wi6n2"]
+[gd_scene load_steps=15 format=3 uid="uid://g0i3r41wi6n2"]
 
 [ext_resource type="Texture2D" uid="uid://dhnmdh5jgcqy0" path="res://art-assets/store_sprites/Storebackground_withMenu.png" id="1_jpg4d"]
 [ext_resource type="Script" path="res://store.gd" id="1_xwdh1"]
 [ext_resource type="Texture2D" uid="uid://bas68skx01omd" path="res://art-assets/pet-view-screen/backArrow1.png" id="2_88h8l"]
 [ext_resource type="Texture2D" uid="uid://b256p0gpcp5yl" path="res://art-assets/pet-view-screen/backArrow2.png" id="3_uxv8l"]
 [ext_resource type="Texture2D" uid="uid://3ai31aouy855" path="res://art-assets/store_sprites/Mouse.png" id="4_qo25i"]
+[ext_resource type="Texture2D" uid="uid://b7cpfbf50w37m" path="res://art-assets/foods/kibble.png" id="5_8tacm"]
 [ext_resource type="Texture2D" uid="uid://c3jonius4gs8h" path="res://art-assets/store_sprites/Bone.png" id="5_ukp2h"]
 [ext_resource type="Texture2D" uid="uid://py0rr1hoot1c" path="res://art-assets/store_sprites/Ball.png" id="6_e4hlx"]
 [ext_resource type="Texture2D" uid="uid://brse2mj460obr" path="res://art-assets/store_sprites/Barley.png" id="7_gu4px"]
+[ext_resource type="AudioStream" uid="uid://cjugjqwu2h4qu" path="res://sounds/interaction_button1.mp3" id="9_djus0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sjs0r"]
 line_spacing = 0.0
@@ -17,11 +19,11 @@ font_size = 33
 line_spacing = 0.0
 font_size = 33
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_t3f0s"]
-size = Vector2(30, 30)
-
 [sub_resource type="LabelSettings" id="LabelSettings_lodwk"]
 font_size = 25
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_t3f0s"]
+size = Vector2(30, 30)
 
 [node name="Store" type="Node2D"]
 script = ExtResource("1_xwdh1")
@@ -104,9 +106,9 @@ color = Color(1, 1, 1, 0)
 [node name="Image" type="TextureRect" parent="VBoxContainer/Food Tier 1"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_t3f0s")
+texture = ExtResource("5_8tacm")
 expand_mode = 2
-stretch_mode = 4
+stretch_mode = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Food Tier 1"]
 layout_mode = 2
@@ -499,6 +501,9 @@ layout_mode = 2
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
+
+[node name="buttonSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_djus0")
 
 [connection signal="pressed" from="VBoxContainer/Funds/Back2" to="." method="_on_back_2_pressed"]
 [connection signal="pressed" from="VBoxContainer/Food Tier 1/temp_buy" to="." method="_on_buy_food_T1"]

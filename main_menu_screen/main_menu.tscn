@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dwwruuyj5grwp"]
+[gd_scene load_steps=19 format=3 uid="uid://dwwruuyj5grwp"]
 
 [ext_resource type="Script" path="res://main_menu_screen/main_menu.gd" id="1_1nxru"]
 [ext_resource type="Texture2D" uid="uid://cf2iqiu3shd2s" path="res://art-assets/title-screen/background.png" id="2_krmob"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bbu431kra4d01" path="res://art-assets/title-screen/scaleSelection.png" id="6_5a3ph"]
 [ext_resource type="Texture2D" uid="uid://doiocb4krurda" path="res://art-assets/title-screen/quitBUttons1.png" id="6_my77w"]
 [ext_resource type="Texture2D" uid="uid://b150ej0jvkike" path="res://art-assets/title-screen/quitBUttons2.png" id="7_n0mnu"]
+[ext_resource type="AudioStream" uid="uid://cjugjqwu2h4qu" path="res://sounds/interaction_button1.mp3" id="9_t64ko"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yyd8n"]
 atlas = ExtResource("3_efvqq")
@@ -137,6 +138,9 @@ offset_bottom = 16.0
 texture = ExtResource("6_5a3ph")
 stretch_mode = 4
 metadata/_edit_lock_ = true
+
+[node name="buttonSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_t64ko")
 
 [connection signal="mouse_entered" from="Play" to="." method="_on_play_mouse_entered"]
 [connection signal="mouse_exited" from="Play" to="." method="_on_play_mouse_exited"]

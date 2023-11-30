@@ -17,6 +17,7 @@ var _anim_Pdelta = randi_range(0,1)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Global.connect("scrollAnimal", _ready) # This is hacky
+	$kennelOpenSound.play()
 
 	if not self.empty and Global.active_kennel != -1:
 		self.kennelNo = Global.active_kennel
@@ -52,7 +53,16 @@ func _process(delta):
 	if Global.player_energy < Global.click_feed_stamdec:
 		$Feed.disabled = true
 	else:
-		$Feed.disabled = false
+		if Global.selected_food == 0:
+			$Feed.disabled = true
+		elif Global.selected_food == 1 and Global.player_inventory['foodT1'] <= 0:
+			$Feed.disabled = true
+		elif Global.selected_food == 2 and Global.player_inventory['foodT2'] <= 0:
+			$Feed.disabled = true
+		elif Global.selected_food == 3 and Global.player_inventory['foodT3'] <= 0:
+			$Feed.disabled = true
+		else:
+			$Feed.disabled = false
 	
 	if Global.player_energy < Global.click_water_stamdec:
 		$Water.disabled = true
@@ -73,13 +83,23 @@ func _process(delta):
 		
 func _on_feed_pressed():
 	if not self.empty and Global.player_energy >= Global.click_feed_stamdec:
-		Global.active_animal["hunger"] += Global.click_feed_petinc
+		$buttonSound.play()
+		if Global.selected_food == 1:
+			Global.player_inventory['foodT1'] -= 1
+			Global.active_animal["hunger"] += Global.click_feed_petinc['foodT1']
+		elif Global.selected_food == 2:
+			Global.player_inventory['foodT2'] -= 1
+			Global.active_animal["hunger"] += Global.click_feed_petinc['foodT2']
+		elif Global.selected_food == 3:
+			Global.player_inventory['foodT3'] -= 1
+			Global.active_animal["hunger"] += Global.click_feed_petinc['foodT3']
 		Global.player_energy -= Global.click_feed_stamdec
 		if Global.active_animal["hunger"] > 100:
 			Global.active_animal["hunger"] = 100
 
 func _on_water_pressed():
 	if not self.empty and Global.player_energy >= Global.click_water_stamdec:
+		$buttonSound.play()
 		Global.active_animal["thirst"] += Global.click_water_petinc
 		Global.player_energy -= Global.click_water_stamdec
 		if Global.active_animal["thirst"] > 100:
@@ -87,6 +107,7 @@ func _on_water_pressed():
 
 func _on_play_with_pet_pressed():
 	if not self.empty and Global.player_energy >= Global.click_play_stamdec:
+		$buttonSound.play()
 		Global.active_animal["happiness"] += Global.click_play_petinc
 		Global.player_energy -= Global.click_play_stamdec
 		if Global.active_animal["happiness"] > 100:
@@ -94,6 +115,8 @@ func _on_play_with_pet_pressed():
 
 func _on_back_pressed():
 	Global.current_animals[self.kennelNo] = Global.active_animal
+	$buttonSound.play()
+	await $buttonSound.finished
 	Global.goto_scene("res://kennel_room/kennel_room.tscn")
 	# reset global actives otherwise it somehow remembers and will update previous selected animals
 	# for some forsaken reason
@@ -119,6 +142,8 @@ func _sprite_animation_pause(delta):
 			self._anim_Pdelta = 1
 
 func _on_adpot_pressed():
+	$buttonSound.play()
+	await $buttonSound.finished
 	var addMon = Global.active_animal["adoptability"]
 	Global.player_money += addMon
 	Global.current_animals.erase(Global.active_kennel)

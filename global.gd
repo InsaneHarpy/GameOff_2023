@@ -55,6 +55,7 @@ var type_array
 ########## Player stats #########
 var player_energy : int = 50
 var player_money : int = 500
+var selected_food : int = 1
 
 var player_inventory = {'foodT1' : 0,
 						'foodT2' : 0,
@@ -65,7 +66,10 @@ var player_inventory = {'foodT1' : 0,
 						'barley' : 0}
 
 # amounts for interacting with animals in animal view
-var click_feed_petinc : int = 10
+var click_feed_petinc = {'foodT1': 10,
+						 'foodT2': 15,
+						 'foodT3': 20}
+						
 var click_feed_stamdec : int = 10
 
 var click_water_petinc : int = 10

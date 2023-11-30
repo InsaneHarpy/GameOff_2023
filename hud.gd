@@ -2,6 +2,9 @@ extends CanvasGroup
 
 var animalMenuClosed : bool = true
 
+#var normal_tex = $"Food Options/Food_T1".texture_normal
+#var selected_tex = $"Food Options/Food_T1".texture_pressed
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 #	get_node("Ebar_placeholder/Energy Bar").text = str(Global.player_energy) + " / 100"
@@ -16,6 +19,7 @@ func _ready():
 	if Global.scene_path == "res://kennel_room/kennel_room.tscn":
 		get_node("Left_ScreenNav").visible = false
 		get_node("Right_ScreenNav").visible = false
+		$"Food Options".visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -36,8 +40,32 @@ func _process(delta):
 		get_node("PanelContainer/VBoxContainer/Animal3/Animal3 label").text = Global.available_animals[3]["name"]
 	else:
 		get_node("PanelContainer/VBoxContainer/Animal3/Animal3 label").text = "None"
-		
-		
+	
+	# make sure only one food option can be selected at a time
+	# selected_food == 0 is no option selected
+	if Global.selected_food == 1:
+		$"Food Options/Food_T1".button_pressed = true
+		$"Food Options/Food_T2".button_pressed = false
+		$"Food Options/Food_T3".button_pressed = false
+	elif Global.selected_food == 2:
+		$"Food Options/Food_T1".button_pressed = false
+		$"Food Options/Food_T2".button_pressed = true
+		$"Food Options/Food_T3".button_pressed = false
+	elif Global.selected_food == 3:
+		$"Food Options/Food_T1".button_pressed = false
+		$"Food Options/Food_T2".button_pressed = false
+		$"Food Options/Food_T3".button_pressed = true
+	elif Global.selected_food == 0:
+		$"Food Options/Food_T1".button_pressed = false
+		$"Food Options/Food_T2".button_pressed = false
+		$"Food Options/Food_T3".button_pressed = false
+	
+	# update label count values
+	$"Food Options/Food_T1/Label".text = str(Global.player_inventory['foodT1'])
+	$"Food Options/Food_T2/Label".text = str(Global.player_inventory['foodT2'])
+	$"Food Options/Food_T3/Label".text = str(Global.player_inventory['foodT3'])
+	
+	
 func update_energy(delta):
 	Global.player_energy += delta
 #	get_node("Ebar_placeholder/Energy Bar").text = str(Global.player_energy) + " / 100"
@@ -49,6 +77,8 @@ func update_money(delta):
 	
 func _on_next_day_pressed():
 #	print("Next day pressed")
+	$buttonSound.play()
+	await $buttonSound.finished
 	Global.player_energy = 100
 	if Global.active_kennel != -1:
 		Global.current_animals[Global.active_kennel] = Global.active_animal
@@ -59,7 +89,10 @@ func _on_next_day_pressed():
 
 
 func _on_available_animals_pressed():
-	print(Global.available_animals)
+#	print(Global.available_animals)
+	$buttonSound.play()
+	await $buttonSound.finished
+	
 	if self.animalMenuClosed:
 		self.open_available_animal_menu()
 	else:
@@ -94,6 +127,7 @@ func _on_animal_1_pressed():
 		Global.fullKennels.append(minKennel)
 		Global.emit_signal("newAnimal")
 		Global.fullKennels.sort()
+		$kennelClosedSound.play()
 	else:
 		print_debug("unable to add animal")
 			
@@ -111,6 +145,7 @@ func _on_animal_2_pressed():
 		Global.fullKennels.append(minKennel)
 		Global.emit_signal("newAnimal")
 		Global.fullKennels.sort()
+		$kennelClosedSound.play()
 	else:
 		print_debug("unable to add animal")
 	
@@ -127,11 +162,14 @@ func _on_animal_3_pressed():
 		Global.fullKennels.append(minKennel)
 		Global.emit_signal("newAnimal")
 		Global.fullKennels.sort()
+		$kennelClosedSound.play()
 	else:
 		print_debug("unable to add animal")
 
 func _on_left_screen_nav_pressed():
 #	print(Global.fullKennels[0])
+	$buttonSound.play()
+	await $buttonSound.finished
 	var idx = Global.fullKennels.find(Global.active_kennel, 0)
 	idx -= 1
 	if idx == -1:
@@ -144,6 +182,8 @@ func _on_left_screen_nav_pressed():
 
 func _on_right_screen_nav_pressed():
 #	print(Global.fullKennels[0])
+	$buttonSound.play()
+	await $buttonSound.finished
 	var idx = Global.fullKennels.find(Global.active_kennel, 0)
 	idx += 1
 	if idx == -1:
@@ -155,4 +195,26 @@ func _on_right_screen_nav_pressed():
 	Global.emit_signal("scrollAnimal")
 
 func _on_shop_pressed():
+	$buttonSound.play()
+	await $buttonSound.finished
 	Global.goto_scene("res://store.tscn")
+
+
+### Toggling buttons for food selection ###
+func _on_food_t1_toggled():
+	if Global.selected_food != 1:
+		Global.selected_food = 1
+	else:
+		Global.selected_food = 0
+
+func _on_food_t2_toggled():
+	if Global.selected_food != 2:
+		Global.selected_food = 2
+	else:
+		Global.selected_food = 0
+
+func _on_food_t3_toggled():
+	if Global.selected_food != 3:
+		Global.selected_food = 3
+	else:
+		Global.selected_food = 0
