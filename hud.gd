@@ -11,7 +11,7 @@ var cont_view : int = 3
 func _ready():
 #	get_node("Ebar_placeholder/Energy Bar").text = str(Global.player_energy) + " / 100"
 	get_node("energy_bar").value = Global.player_energy
-	get_node("money/Monies").text = str(Global.player_money)
+	$Monies.text = str(Global.player_money)
 	
 	$"PanelContainer/Views/3View".visible = false
 	$"PanelContainer/Views/2View".visible = false
@@ -44,7 +44,10 @@ func _ready():
 func _process(delta):
 #	get_node("Ebar_placeholder/Energy Bar").text = str(Global.player_energy) + " / 100"
 	get_node("energy_bar").value = Global.player_energy
-	get_node("money/Monies").text = str(Global.player_money)
+	$Monies.text = str(Global.player_money)
+	
+	print($Monies.get_size().x)
+	$StretchBox.set_size(Vector2($Monies.get_size().x/5+13, 12))
 	
 	# make sure only one food option can be selected at a time
 	# selected_food == 0 is no option selected
@@ -85,7 +88,7 @@ func update_energy(delta):
 	
 func update_money(delta):
 	Global.player_money += delta
-	get_node("money/Monies").text = str(Global.player_money)
+	$Monies.text = str(Global.player_money)
 	
 func _on_next_day_pressed():
 #	print("Next day pressed")

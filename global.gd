@@ -238,7 +238,7 @@ func advance_day():
 		
 		# how does pet adoptability increase?
 		if self.current_animals[key]['happiness'] > 75:
-			self.current_animals[key]['adoptability'] += randi()%6 + 1
+			self.current_animals[key]['adoptability'] += randi()%10 + 1
 		
 		#########
 		

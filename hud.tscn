@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://b7cpfbf50w37m" path="res://art-assets/foods/kibble.png" id="20_uu0l1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1lr4o"]
+line_spacing = 0.0
 font_size = 27
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ucd7a"]
@@ -61,23 +62,26 @@ texture_under = ExtResource("2_bhbv5")
 texture_progress = ExtResource("3_3ve12")
 metadata/_edit_lock_ = true
 
-[node name="money" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(130, 60)
+[node name="StretchBox" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(0, 12)
 offset_left = 304.0
 offset_top = 592.0
-offset_right = 434.0
-offset_bottom = 652.0
+offset_right = 330.0
+offset_bottom = 604.0
+scale = Vector2(5, 5)
 texture = ExtResource("4_w1hkb")
-stretch_mode = 4
+patch_margin_left = 9
+patch_margin_right = 5
+metadata/_edit_lock_ = true
 
-[node name="Monies" type="Label" parent="money"]
-layout_mode = 0
-offset_left = 8.0
-offset_right = 128.0
-offset_bottom = 58.0
-text = "$$$ test"
+[node name="Monies" type="Label" parent="."]
+offset_left = 349.0
+offset_top = 593.0
+offset_right = 381.0
+offset_bottom = 642.0
+theme_override_font_sizes/font_size = 0
+text = "100"
 label_settings = SubResource("LabelSettings_1lr4o")
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Next Day" type="TextureButton" parent="."]
@@ -245,13 +249,6 @@ texture_hover = ExtResource("13_t4d12")
 texture_disabled = ExtResource("14_t2g1f")
 stretch_mode = 4
 metadata/_edit_lock_ = true
-
-[node name="Label" type="Label" parent="."]
-offset_left = 32.0
-offset_top = -32.0
-offset_right = 704.0
-offset_bottom = 408.0
-scale = Vector2(5, 5)
 
 [node name="Left_ScreenNav" type="TextureButton" parent="."]
 offset_left = 8.0
