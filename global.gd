@@ -9,6 +9,7 @@ var active_animal = {}
 var fullKennels = [1,2,3]
 var maxKennels : int = 6
 
+<<<<<<< Updated upstream
 var fade : bool = false
 
 var current_animals = {1: {'name': 'Spyro',
@@ -32,17 +33,58 @@ var current_animals = {1: {'name': 'Spyro',
 						   'thirst': 10,
 						   'hunger': 10,
 						   'happiness': 0}
+=======
+var current_animals = {1: {'name': 'Paparino',
+						'type': 'Dragon',
+						'adoptability': 75,
+						'health': 25,
+						'thirst': 10,
+						'hunger': 10,
+						'happiness': 0,
+						'toy': ''}
+#						2: {'name': 'Winnie',
+#						   'type': 'Nine Tailed Fox',
+#						   'adoptability': 75,
+#						   'health': 25,
+#						   'thirst': 10,
+#						   'hunger': 10,
+#						   'happiness': 0,
+#						   'toy': ''},
+#						3: {'name': 'Jabu',
+#						   'type': 'Griffin',
+#						   'adoptability': 75,
+#						   'health': 25,
+#						   'thirst': 10,
+#						   'hunger': 10,
+#						   'happiness': 0,
+#						   'toy': ''}
+>>>>>>> Stashed changes
 						}
 var available_animals = {1: {},
+<<<<<<< Updated upstream
 						 2: {},
 						 3: {}}
+=======
+						2: {},
+						3: {}}
+
+######### Vars to hold random animal types and names #########
+
+>>>>>>> Stashed changes
 var name_array
 var type_array
 var player_energy : int = 50
 var player_money : int = 500
 
 # amounts for interacting with animals in animal view
+<<<<<<< Updated upstream
 var click_feed_petinc : int = 10
+=======
+var click_feed_petinc = {'foodT1': 10,
+						'foodT2': 15,
+						'foodT3': 20}
+						
+>>>>>>> Stashed changes
 var click_feed_stamdec : int = 10
 
 var click_water_petinc : int = 10
@@ -51,9 +93,29 @@ var click_water_stamdec : int = 10
 var click_play_petinc : int = 10
 var click_play_stamdec : int = 10
 
+<<<<<<< Updated upstream
+=======
+var toy_happiness_inc = {'mouse' : 5,
+						'bone' : 10,
+						'yarn' : 15,
+						'barley' : 20}
+
+##### Store Prices ######
+var foodT1_price : int = 10
+var foodT2_price : int = 20
+var foodT3_price : int = 50
+var mouse_price : int = 15
+var bone_price : int = 30
+var yarn_price : int = 50
+var barley_price: int = 100
+
+						
+##### Animation handler #############
+
+>>>>>>> Stashed changes
 var animations = {'Dragon':'blue dragon',
-				  'Nine Tailed Fox': 'fox',
-				  'Griffin': 'gryphon'}
+				'Nine Tailed Fox': 'fox',
+				'Griffin': 'gryphon'}
 				
 				
 signal scrollAnimal
@@ -150,7 +212,7 @@ func advance_day():
 		
 		# natrual declination of thirst and hunger
 		elif (self.current_animals[key]['thirst'] < 75
-			  or self.current_animals[key]['hunger'] < 50):
+			or self.current_animals[key]['hunger'] < 50):
 				
 			self.current_animals[key]['health'] -= randi()%10 +1
 		
@@ -158,7 +220,7 @@ func advance_day():
 		
 		# increase health because good thirst and hunger
 		elif (self.current_animals[key]['thirst'] >=75
-			  and self.current_animals[key]['hunger'] >= 50):
+			and self.current_animals[key]['hunger'] >= 50):
 				
 			self.current_animals[key]['health'] += randi()%10 + 1
 		
