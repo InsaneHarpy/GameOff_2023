@@ -17,13 +17,13 @@ var fullKennels = [1]#,2,3]
 var maxKennels : int = 6
 
 var current_animals = {1: {'name': 'Paparino',
-						   'type': 'Dragon',
-						   'adoptability': 75,
-						   'health': 25,
-						   'thirst': 10,
-						   'hunger': 10,
-						   'happiness': 0,
-						   'toy': ''}
+						'type': 'Dragon',
+						'adoptability': 75,
+						'health': 25,
+						'thirst': 10,
+						'hunger': 10,
+						'happiness': 0,
+						'toy': ''}
 #						2: {'name': 'Winnie',
 #						   'type': 'Nine Tailed Fox',
 #						   'adoptability': 75,
@@ -44,8 +44,8 @@ var current_animals = {1: {'name': 'Paparino',
 
 ##### Animals that can be brought into shelter #######
 var available_animals = {1: {},
-						 2: {},
-						 3: {}}
+						2: {},
+						3: {}}
 
 ######### Vars to hold random animal types and names #########
 
@@ -67,8 +67,8 @@ var player_inventory = {'foodT1' : 0,
 
 # amounts for interacting with animals in animal view
 var click_feed_petinc = {'foodT1': 10,
-						 'foodT2': 15,
-						 'foodT3': 20}
+						'foodT2': 15,
+						'foodT3': 30}
 						
 var click_feed_stamdec : int = 10
 
@@ -79,9 +79,9 @@ var click_play_petinc : int = 10
 var click_play_stamdec : int = 10
 
 var toy_happiness_inc = {'mouse' : 5,
-						 'bone' : 10,
-						 'yarn' : 15,
-						 'barley' : 20}
+						'bone' : 10,
+						'yarn' : 15,
+						'barley' : 20}
 
 ##### Store Prices ######
 var foodT1_price : int = 10
@@ -96,8 +96,8 @@ var barley_price: int = 100
 ##### Animation handler #############
 
 var animations = {'Dragon':'blue dragon',
-				  'Nine Tailed Fox': 'fox',
-				  'Griffin': 'gryphon'}
+				'Nine Tailed Fox': 'fox',
+				'Griffin': 'gryphon'}
 				
 				
 ###### Signal managment ###########
@@ -197,7 +197,7 @@ func advance_day():
 		
 		# natrual declination of thirst and hunger
 		elif (self.current_animals[key]['thirst'] < 75
-			  or self.current_animals[key]['hunger'] < 50):
+			or self.current_animals[key]['hunger'] < 50):
 				
 			self.current_animals[key]['health'] -= randi()%10 +1
 		
@@ -205,7 +205,7 @@ func advance_day():
 		
 		# increase health because good thirst and hunger
 		elif (self.current_animals[key]['thirst'] >=75
-			  and self.current_animals[key]['hunger'] >= 50):
+			and self.current_animals[key]['hunger'] >= 50):
 				
 			self.current_animals[key]['health'] += randi()%10 + 1
 		

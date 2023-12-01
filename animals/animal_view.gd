@@ -196,7 +196,7 @@ func _on_adpot_pressed():
 	$buttonSound.play()
 	await $buttonSound.finished
 	var addMon = Global.active_animal["adoptability"]
-	Global.player_money += addMon
+	Global.player_money += int(1.25*addMon)
 	Global.current_animals.erase(Global.active_kennel)
 	Global.fullKennels.erase(Global.active_kennel)
 	Global.active_kennel = -1
