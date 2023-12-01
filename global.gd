@@ -216,7 +216,7 @@ func advance_day():
 			self.current_animals[key]['hunger'] -= 25
 			self.current_animals[key]['thirst'] -= 25
 			self.current_animals[key]['happiness'] -= 50
-			self.current_animals[key]['adoptability'] = 0
+			self.current_animals[key]['adoptability'] -= 10
 		
 		#########
 		
