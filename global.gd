@@ -11,6 +11,7 @@ var maxKennels : int = 6
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 var fade : bool = false
 
 var current_animals = {1: {'name': 'Spyro',
@@ -37,6 +38,10 @@ var current_animals = {1: {'name': 'Spyro',
 =======
 =======
 >>>>>>> Stashed changes
+=======
+var fade : bool = false
+
+>>>>>>> Stashed changes
 var current_animals = {1: {'name': 'Paparino',
 						'type': 'Dragon',
 						'adoptability': 75,
@@ -61,9 +66,9 @@ var current_animals = {1: {'name': 'Paparino',
 #						   'hunger': 10,
 #						   'happiness': 0,
 #						   'toy': ''}
->>>>>>> Stashed changes
 						}
 var available_animals = {1: {},
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 						 2: {},
@@ -71,30 +76,32 @@ var available_animals = {1: {},
 =======
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 						2: {},
 						3: {}}
 
 ######### Vars to hold random animal types and names #########
 
->>>>>>> Stashed changes
 var name_array
 var type_array
 var player_energy : int = 50
 var player_money : int = 500
 
 # amounts for interacting with animals in animal view
-<<<<<<< Updated upstream
-var click_feed_petinc : int = 10
-=======
+# var click_feed_petinc : int = 10
 var click_feed_petinc = {'foodT1': 10,
 						'foodT2': 15,
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 						'foodT3': 20}
 =======
 						'foodT3': 30}
 >>>>>>> Stashed changes
-						
+=======
+						'foodT3': 30}
 >>>>>>> Stashed changes
+						
 var click_feed_stamdec : int = 10
 
 var click_water_petinc : int = 10
@@ -103,8 +110,6 @@ var click_water_stamdec : int = 10
 var click_play_petinc : int = 10
 var click_play_stamdec : int = 10
 
-<<<<<<< Updated upstream
-=======
 var toy_happiness_inc = {'mouse' : 5,
 						'bone' : 10,
 						'yarn' : 15,
@@ -122,12 +127,10 @@ var barley_price: int = 100
 						
 ##### Animation handler #############
 
->>>>>>> Stashed changes
 var animations = {'Dragon':'blue dragon',
 				'Nine Tailed Fox': 'fox',
 				'Griffin': 'gryphon'}
-				
-				
+
 signal scrollAnimal
 signal newAnimal
 
