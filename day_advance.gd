@@ -8,7 +8,7 @@ var kennels_petrunaway = []
 var pra_idx : int = 0
 
 var petrunaway_timeout : int = 5
-var daycount_timeout : int = 2
+var daycount_timeout : int = 1
 var between_timeout : float = 0.5
 
 var sound_play : bool = false
