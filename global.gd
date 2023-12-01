@@ -44,7 +44,7 @@ var current_animals = {1: {'name': 'Paparino',
 ##### Animals that can be brought into shelter #######
 var available_animals = {1: {},
 						2: {},
-						3: {}}
+						3: {}}			
 
 ######### Vars to hold random animal types and names #########
 
@@ -65,7 +65,7 @@ var player_inventory = {'foodT1' : 0,
 						'barley' : 0}
 
 # amounts for interacting with animals in animal view
-var pet_runaway_penalty : int = 50
+var pet_runaway_penalty : int = 20
 
 var click_feed_petinc = {'foodT1': 10,
 						'foodT2': 15,

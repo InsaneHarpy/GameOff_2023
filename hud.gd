@@ -1,6 +1,8 @@
 extends CanvasGroup
 
 var animalMenuClosed : bool = true
+var animals_keys = []
+var cont_view : int = 3
 
 #var normal_tex = $"Food Options/Food_T1".texture_normal
 #var selected_tex = $"Food Options/Food_T1".texture_pressed
@@ -11,35 +13,38 @@ func _ready():
 	get_node("energy_bar").value = Global.player_energy
 	get_node("money/Monies").text = str(Global.player_money)
 	
-	get_node("PanelContainer/VBoxContainer/Animal1").visible = false
-	get_node("PanelContainer/VBoxContainer/Animal2").visible = false
-	get_node("PanelContainer/VBoxContainer/Animal3").visible = false
-	get_node("PanelContainer/VBoxContainer/available animals").flip_v = false
+	$"PanelContainer/Views/3View".visible = false
+	$"PanelContainer/Views/2View".visible = false
+	$"PanelContainer/Views/1View".visible = false
+	$"PanelContainer/Views/available animals".flip_v = false
 
 	if Global.scene_path == "res://kennel_room/kennel_room.tscn":
 		get_node("Left_ScreenNav").visible = false
 		get_node("Right_ScreenNav").visible = false
 		$"Food Options".visible = false
+		
+	for key in Global.available_animals:
+		if Global.available_animals[key] != {}:
+			if key not in self.animals_keys:
+				self.animals_keys.append(key)
+				print_debug(self.animals_keys)
+	
+	if len(self.animals_keys) == 3:
+		self.cont_view = 3
+	elif len(self.animals_keys) == 2:
+		self.cont_view = 2
+	elif len(self.animals_keys) == 1:
+		self.cont_view = 1
+	elif len(self.animals_keys) == 0:
+		self.cont_view = 0
+		
+	self.update_available_animals()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 #	get_node("Ebar_placeholder/Energy Bar").text = str(Global.player_energy) + " / 100"
 	get_node("energy_bar").value = Global.player_energy
 	get_node("money/Monies").text = str(Global.player_money)
-	
-
-	if "name" in Global.available_animals[1].keys():
-		get_node("PanelContainer/VBoxContainer/Animal1/Animal1 label").text = Global.available_animals[1]["name"]
-	else:
-		get_node("PanelContainer/VBoxContainer/Animal1/Animal1 label").text = "None"
-	if "name" in Global.available_animals[2].keys():
-		get_node("PanelContainer/VBoxContainer/Animal2/Animal2 label").text = Global.available_animals[2]["name"]
-	else:
-		get_node("PanelContainer/VBoxContainer/Animal2/Animal2 label").text = "None"
-	if "name" in Global.available_animals[3].keys():
-		get_node("PanelContainer/VBoxContainer/Animal3/Animal3 label").text = Global.available_animals[3]["name"]
-	else:
-		get_node("PanelContainer/VBoxContainer/Animal3/Animal3 label").text = "None"
 	
 	# make sure only one food option can be selected at a time
 	# selected_food == 0 is no option selected
@@ -106,20 +111,52 @@ func _on_available_animals_pressed():
 		self.close_available_animal_menu()
 
 func open_available_animal_menu():
-	get_node("PanelContainer/VBoxContainer/Animal1").visible = true
-	get_node("PanelContainer/VBoxContainer/Animal2").visible = true
-	get_node("PanelContainer/VBoxContainer/Animal3").visible = true
-	get_node("PanelContainer/VBoxContainer/available animals").flip_v = true
-	get_node("PanelContainer").position -= Vector2(0,(60-12)*5)
+	if self.cont_view == 3:
+		$"PanelContainer/Views/3View".visible = true
+		$PanelContainer.position -= Vector2(0,(49)*5)
+	elif self.cont_view == 2:
+		$"PanelContainer/Views/2View".visible = true
+		$PanelContainer.position -= Vector2(0,(36)*5)
+	elif self.cont_view == 1:
+		$"PanelContainer/Views/1View".visible = true
+		$PanelContainer.position -= Vector2(0,(22)*5)
+	elif self.cont_view == 0:
+		$PanelContainer/Views/NoAvailable.visible = true
+		$PanelContainer.position -= Vector2(0,(22)*5)
+		
+	self.update_available_animals()
+		
+	$"PanelContainer/Views/available animals".flip_v = true
 	self.animalMenuClosed = false
 
 func close_available_animal_menu():
-	get_node("PanelContainer/VBoxContainer/Animal1").visible = false
-	get_node("PanelContainer/VBoxContainer/Animal2").visible = false
-	get_node("PanelContainer/VBoxContainer/Animal3").visible = false
-	get_node("PanelContainer/VBoxContainer/available animals").flip_v = false
-	get_node("PanelContainer").position += Vector2(0,(60-12)*5)
+	if self.cont_view == 3:
+		$"PanelContainer/Views/3View".visible = false
+		$PanelContainer.position += Vector2(0,(49)*5)
+	elif self.cont_view == 2:
+		$"PanelContainer/Views/2View".visible = false
+		$PanelContainer.position += Vector2(0,(36)*5)
+	elif self.cont_view == 1:
+		$"PanelContainer/Views/1View".visible = false
+		$PanelContainer.position += Vector2(0,(22)*5)
+	elif self.cont_view == 0:
+		$PanelContainer/Views/NoAvailable.visible = false
+		$PanelContainer.position += Vector2(0,(22)*5)
+		
+	$"PanelContainer/Views/available animals".flip_v = false
+
 	self.animalMenuClosed = true
+	
+func update_available_animals():
+	if self.cont_view == 3:
+		$"PanelContainer/Views/3View/Animal1/Animal1 label".text = Global.available_animals[self.animals_keys[0]]['name']
+		$"PanelContainer/Views/3View/Animal2/Animal2 label".text = Global.available_animals[self.animals_keys[1]]['name']
+		$"PanelContainer/Views/3View/Animal3/Animal3 label".text = Global.available_animals[self.animals_keys[2]]['name']
+	elif self.cont_view == 2:	
+		$"PanelContainer/Views/2View/Animal1/Animal1 label".text = Global.available_animals[self.animals_keys[0]]['name']
+		$"PanelContainer/Views/2View/Animal2/Animal2 label".text = Global.available_animals[self.animals_keys[1]]['name']
+	elif self.cont_view == 1:
+		$"PanelContainer/Views/1View/Animal1/Animal1 label".text = Global.available_animals[self.animals_keys[0]]['name']
 	
 func _on_animal_1_pressed():
 	var availableKennels = []
@@ -128,15 +165,20 @@ func _on_animal_1_pressed():
 			availableKennels.append(i)
 	var minKennel = availableKennels.min()
 	
-	if minKennel != null and "name" in Global.available_animals[1].keys():
-		Global.current_animals[minKennel] = Global.available_animals[1]
-		Global.available_animals[1] = {}
+	if minKennel != null and "name" in Global.available_animals[self.animals_keys[0]].keys():
+		Global.current_animals[minKennel] = Global.available_animals[self.animals_keys[0]]
+		Global.available_animals[self.animals_keys[0]] = {}
+		self.animals_keys.remove_at(0)
 		Global.fullKennels.append(minKennel)
 		Global.emit_signal("newAnimal")
 		Global.fullKennels.sort()
 		$kennelClosedSound.play()
 	else:
 		print_debug("unable to add animal")
+	
+	self.close_available_animal_menu()
+	self.cont_view -= 1
+	self.update_available_animals()
 			
 
 func _on_animal_2_pressed():
@@ -146,15 +188,20 @@ func _on_animal_2_pressed():
 			availableKennels.append(i)
 	var minKennel = availableKennels.min()
 	
-	if minKennel != null and "name" in Global.available_animals[2].keys():
-		Global.current_animals[minKennel] = Global.available_animals[2]
-		Global.available_animals[2] = {}
+	if minKennel != null and "name" in Global.available_animals[self.animals_keys[1]].keys():
+		Global.current_animals[minKennel] = Global.available_animals[self.animals_keys[1]]
+		Global.available_animals[self.animals_keys[1]] = {}
+		self.animals_keys.remove_at(1)
 		Global.fullKennels.append(minKennel)
 		Global.emit_signal("newAnimal")
 		Global.fullKennels.sort()
 		$kennelClosedSound.play()
 	else:
 		print_debug("unable to add animal")
+	
+	self.close_available_animal_menu()
+	self.cont_view -= 1
+	self.update_available_animals()
 	
 func _on_animal_3_pressed():
 	var availableKennels = []
@@ -163,15 +210,20 @@ func _on_animal_3_pressed():
 			availableKennels.append(i)
 	var minKennel = availableKennels.min()
 	
-	if minKennel != null and "name" in Global.available_animals[3].keys():
-		Global.current_animals[minKennel] = Global.available_animals[3]
-		Global.available_animals[3] = {}
+	if minKennel != null and "name" in Global.available_animals[self.animals_keys[2]].keys():
+		Global.current_animals[minKennel] = Global.available_animals[self.animals_keys[2]]
+		Global.available_animals[self.animals_keys[2]] = {}
+		self.animals_keys.remove_at(2)
 		Global.fullKennels.append(minKennel)
 		Global.emit_signal("newAnimal")
 		Global.fullKennels.sort()
 		$kennelClosedSound.play()
 	else:
 		print_debug("unable to add animal")
+	
+	self.close_available_animal_menu()
+	self.cont_view -= 1
+	self.update_available_animals()
 
 func _on_left_screen_nav_pressed():
 #	print(Global.fullKennels[0])
