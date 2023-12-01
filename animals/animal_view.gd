@@ -24,6 +24,7 @@ func _ready():
 	$PetInfo.visible = true
 	
 	if not self.empty and Global.active_kennel != -1:
+		$"pet sprite/Timer".start(1)
 		self.kennelNo = Global.active_kennel
 		if Global.active_animal['type'] in Global.animations.keys():
 			_animated_pet_sprite.play(Global.animations[Global.active_animal['type']])
@@ -38,10 +39,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Global.active_animal == {}:
+		return
+	
 	if not self.empty:
 		$PetInfo/KennelNo.text = "Kennel Number: " + str(Global.active_kennel)
-		self._sprite_animation_pause(delta)
-		
+
 		# pet info
 		$PetInfo/HBoxContainer/VBoxContainer/animalName.text = "Name: " + str(Global.active_animal['name'])
 		$PetInfo/HBoxContainer/VBoxContainer/animalType.text = "Type: " + str(Global.active_animal['type'])
@@ -175,22 +178,6 @@ func _on_back_pressed():
 	Global.active_animal = {}
 	Global.active_kennel = -1
 	
-func _sprite_animation_pause(delta):
-	'''
-	Randomly play and pause sprite animation
-	'''
-	self._anim_Pdelta -= delta
-	if self._anim_Pdelta <=0:
-		randomize()
-		if not self._anim_pause:
-			self._anim_pause = true
-			_animated_pet_sprite.speed_scale = 0
-			_animated_pet_sprite.frame = 0
-			self._anim_Pdelta = randf_range(3,30)
-		else:
-			self._anim_pause = false
-			_animated_pet_sprite.speed_scale = 1
-			self._anim_Pdelta = 1
 
 func _on_adpot_pressed():
 	$buttonSound.play()
@@ -256,3 +243,19 @@ func _on_give_barley_pressed():
 		Global.player_inventory[Global.active_animal['toy']] += 1
 		Global.active_animal['toy'] = 'barley'
 		Global.player_inventory['barley'] -= 1
+
+
+func _on_pet_sprite_animation_finished():
+	if not self._anim_pause:
+		_animated_pet_sprite.play(Global.animations[Global.active_animal['type']])
+
+
+func _on_timer_timeout():
+	randomize()
+	if not self._anim_pause:
+		self._anim_pause = true
+		$"pet sprite/Timer".start(randf_range(3,30))
+	else:
+		self._anim_pause = false
+		_animated_pet_sprite.play(Global.animations[Global.active_animal['type']])
+		$"pet sprite/Timer".start(1)

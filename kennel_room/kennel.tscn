@@ -68,7 +68,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_25egk")
 }],
-"loop": true,
+"loop": false,
 "name": &"blue dragon",
 "speed": 5.0
 }, {
@@ -85,7 +85,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_m8a42")
 }],
-"loop": true,
+"loop": false,
 "name": &"fox",
 "speed": 5.0
 }, {
@@ -102,7 +102,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mqty6")
 }],
-"loop": true,
+"loop": false,
 "name": &"gryphon",
 "speed": 5.0
 }]
@@ -194,4 +194,11 @@ text = "Happiness: 50 / 100"
 position = Vector2(7.62939e-06, 7.62939e-06)
 scale = Vector2(3.7, 3.7)
 sprite_frames = SubResource("SpriteFrames_hrypp")
-animation = &"fox"
+animation = &"gryphon"
+frame = 3
+frame_progress = 1.0
+
+[node name="Timer" type="Timer" parent="pet sprite"]
+
+[connection signal="animation_finished" from="pet sprite" to="." method="_on_pet_sprite_animation_finished"]
+[connection signal="timeout" from="pet sprite/Timer" to="." method="_on_timer_timeout"]

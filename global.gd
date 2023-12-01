@@ -8,7 +8,6 @@ var prev_scene : String = "res://kennel_room/kennel_room.tscn"
 var daycount : int = 1
 var fade : bool = false
 
-
 ########## Kennel info #############
 
 var active_kennel : int = -1
@@ -18,11 +17,11 @@ var maxKennels : int = 6
 
 var current_animals = {1: {'name': 'Paparino',
 						'type': 'Dragon',
-						'adoptability': 75,
-						'health': 25,
+						'adoptability': 65,
+						'health': 10,
 						'thirst': 10,
 						'hunger': 10,
-						'happiness': 0,
+						'happiness': 10,
 						'toy': ''}
 #						2: {'name': 'Winnie',
 #						   'type': 'Nine Tailed Fox',
@@ -102,6 +101,7 @@ var animations = {'Dragon':'blue dragon',
 				'Griffin': 'gryphon'}
 				
 				
+				
 ###### Signal managment ###########
 
 signal scrollAnimal
@@ -155,9 +155,7 @@ func _process(delta):
 		self.player_energy = 100
 #	if self.fade:
 #		get_tree().current_scene.set_modulate(lerp(get_tree().current_scene.get_modulate(), Color(0,0,0,1), 0.2))
-#		print(get_tree().current_scene.get_modulate())
 #		if get_tree().current_scene.get_modulate().is_equal_approx(Color(0,0,0,1)):
-#			print('here')
 #			call_deferred("_deferred_goto_scene", self.scene_path)
 #			self.fade = false
 #			get_tree().current_scene.set_modulate(lerp(get_tree().current_scene.get_modulate(), Color(0,0,0,1), 0.2))

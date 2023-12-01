@@ -85,7 +85,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fh6su")
 }],
-"loop": true,
+"loop": false,
 "name": &"blue dragon",
 "speed": 5.0
 }, {
@@ -96,7 +96,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_awpeh")
 }],
-"loop": true,
+"loop": false,
 "name": &"fox",
 "speed": 5.0
 }, {
@@ -113,7 +113,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_646xb")
 }],
-"loop": true,
+"loop": false,
 "name": &"gryphon",
 "speed": 5.0
 }]
@@ -652,7 +652,9 @@ stretch_mode = 0
 position = Vector2(704, 320)
 scale = Vector2(6.47222, 6.47222)
 sprite_frames = SubResource("SpriteFrames_b0vbh")
-animation = &"gryphon"
+animation = &"blue dragon"
+
+[node name="Timer" type="Timer" parent="pet sprite"]
 
 [node name="Toy" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -679,3 +681,5 @@ stream = ExtResource("11_53nrk")
 [connection signal="pressed" from="ToyView/Barley/Give" to="." method="_on_give_barley_pressed"]
 [connection signal="pressed" from="ToyView/ToyView_back" to="." method="_on_toy_view_back_pressed"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="animation_finished" from="pet sprite" to="." method="_on_pet_sprite_animation_finished"]
+[connection signal="timeout" from="pet sprite/Timer" to="." method="_on_timer_timeout"]

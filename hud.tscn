@@ -293,7 +293,6 @@ volume_db = 15.0
 [node name="kennelClosedSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("17_x46sc")
 
-[connection signal="mouse_entered" from="Next Day" to="." method="_on_next_day_mouse_entered"]
 [connection signal="pressed" from="Next Day" to="." method="_on_next_day_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Animal1" to="." method="_on_animal_1_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Animal2" to="." method="_on_animal_2_pressed"]

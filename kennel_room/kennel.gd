@@ -42,6 +42,8 @@ func on_click():
 	
 func _ready():
 	if not self.empty:
+		print_debug("start timer")
+		$"pet sprite/Timer".start(1)
 		if self.type in Global.animations.keys():
 			_animated_pet_sprite.play(Global.animations[self.type])
 		else:
@@ -50,21 +52,6 @@ func _ready():
 	else:
 		_animated_pet_sprite.hide()
 	
-func _process(delta):
-	self._sprite_animation_pause(delta)
-	# set values for kennel info
-	
-	###### debugging ############
-#	get_node("KennelNo").text = "Kennel Number: " + str(self.KennelNo)
-#	get_node("animalName").text = "Name: " + str(self.animalName)
-#	get_node("animalType").text = "Type: " + str(self.type)
-#	get_node("animalAdoptability").text = "Adoptability: " + str(self.adoptability) + " / 100"
-#	get_node("animalHealth").text = "Health: " + str(self.health) + " / 100"
-#	get_node("animalThirst").text = "Thirst: " + str(self.thirst) + " / 100"
-#	get_node("animalHunger").text = "Hunger: " + str(self.hunger) + " / 100"
-#	get_node("animalHappiness").text = "Happiness: " + str(self.happiness) + " / 100"
-	###### end debugging ############
-	
 func update_animal(dict={}, kempty = false):
 	'''
 	Pass dictionary of animal info to kennel
@@ -72,6 +59,7 @@ func update_animal(dict={}, kempty = false):
 	self.empty = kempty
 
 	if not self.empty:
+		$"pet sprite/Timer".start(1)
 		self.animalName = dict['name']
 		self.type = dict['type']
 		self.adoptability = dict['adoptability']
@@ -88,23 +76,6 @@ func update_animal(dict={}, kempty = false):
 			_animated_pet_sprite.hide()
 	else:
 		_animated_pet_sprite.hide()
-		
-func _sprite_animation_pause(delta):
-	'''
-	Randomly play and pause sprite animation
-	'''
-	self._anim_Pdelta -= delta
-	if self._anim_Pdelta <=0:
-		randomize()
-		if not self._anim_pause:
-			self._anim_pause = true
-			_animated_pet_sprite.speed_scale = 0
-			_animated_pet_sprite.frame = 0
-			self._anim_Pdelta = randf_range(3,30)
-		else:
-			self._anim_pause = false
-			_animated_pet_sprite.speed_scale = 1
-			self._anim_Pdelta = 1
 	
 func _enter_tree():
 	'''
@@ -121,3 +92,18 @@ func _exit_tree():
 	'''
 	if get_parent().has_method("_kennel_clicked"):
 		clicked.disconnect(get_parent()._kennel_clicked)
+
+func _on_timer_timeout():
+	randomize()
+	if not self._anim_pause:
+		self._anim_pause = true
+		$"pet sprite/Timer".start(randf_range(3,30))
+	else:
+		self._anim_pause = false
+		_animated_pet_sprite.play(Global.animations[self.type])
+		$"pet sprite/Timer".start(1)
+
+
+func _on_pet_sprite_animation_finished():
+	if not self._anim_pause:
+		_animated_pet_sprite.play(Global.animations[self.type])

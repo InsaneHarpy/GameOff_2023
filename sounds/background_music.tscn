@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqrjlhvhmjlgg"]
+
+[ext_resource type="AudioStream" uid="uid://tiktcylpf655" path="res://sounds/bkd.mp3" id="1_ul6ut"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_ul6ut")
+volume_db = -5.474
+autoplay = true
