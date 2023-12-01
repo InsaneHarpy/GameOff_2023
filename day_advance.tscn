@@ -1,14 +1,95 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbhmnvqbywkvd"]
+[gd_scene load_steps=19 format=3 uid="uid://bbhmnvqbywkvd"]
 
 [ext_resource type="Script" path="res://day_advance.gd" id="1_npjfa"]
 [ext_resource type="Texture2D" uid="uid://o36vuhve80kk" path="res://art-assets/kennel-screen/USEME/Bkgnd.png" id="1_w3sdd"]
 [ext_resource type="FontFile" uid="uid://civthkg8buw10" path="res://art-assets/fonts/HeaderPixelFont.TTF" id="2_guw7t"]
+[ext_resource type="Texture2D" uid="uid://cktf71ov352u1" path="res://art-assets/pet-sprites/BlueDragon-sprite.png" id="4_63kn2"]
+[ext_resource type="Texture2D" uid="uid://dldtojjop2ois" path="res://art-assets/pet-sprites/Fox-sprite.png" id="5_5op78"]
+[ext_resource type="Texture2D" uid="uid://5kn3d4iaolb" path="res://art-assets/pet-sprites/Gryphon-sprite.png" id="6_fdfah"]
+[ext_resource type="AudioStream" uid="uid://dpojih2vask0v" path="res://sounds/eod_typewriter.mp3" id="7_s1n70"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d6lk3"]
+line_spacing = 0.0
+font = ExtResource("2_guw7t")
+font_size = 50
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ui831"]
+atlas = ExtResource("4_63kn2")
+region = Rect2(0, 0, 45, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fh6su"]
+atlas = ExtResource("4_63kn2")
+region = Rect2(45, 0, 45, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntkkf"]
+atlas = ExtResource("5_5op78")
+region = Rect2(0, 0, 45, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awpeh"]
+atlas = ExtResource("5_5op78")
+region = Rect2(45, 0, 45, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbqeo"]
+atlas = ExtResource("6_fdfah")
+region = Rect2(90, 0, 45, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnech"]
+atlas = ExtResource("6_fdfah")
+region = Rect2(45, 0, 45, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_646xb"]
+atlas = ExtResource("6_fdfah")
+region = Rect2(0, 0, 45, 45)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xv7dq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ui831")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fh6su")
+}],
+"loop": true,
+"name": &"blue dragon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ntkkf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awpeh")
+}],
+"loop": true,
+"name": &"fox",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbqeo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pnech")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pnech")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_646xb")
+}],
+"loop": true,
+"name": &"gryphon",
+"speed": 5.0
+}]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nxe7j"]
+line_spacing = 0.0
 font = ExtResource("2_guw7t")
 font_size = 129
 
 [sub_resource type="LabelSettings" id="LabelSettings_1nmeo"]
+line_spacing = 0.0
 font = ExtResource("2_guw7t")
 font_size = 129
 
@@ -22,26 +103,74 @@ scale = Vector2(5, 5)
 texture = ExtResource("1_w3sdd")
 metadata/_edit_lock_ = true
 
-[node name="Day" type="Label" parent="."]
-offset_left = 288.0
-offset_top = 232.0
-offset_right = 621.0
-offset_bottom = 365.0
-text = "Day"
-label_settings = SubResource("LabelSettings_nxe7j")
+[node name="PetRunAway" type="VBoxContainer" parent="."]
+visible = false
+offset_right = 900.0
+offset_bottom = 750.0
 metadata/_edit_lock_ = true
 
-[node name="Counter" type="Label" parent="."]
-offset_top = 384.0
-offset_right = 896.0
-offset_bottom = 517.0
+[node name="spacer_beg" type="Label" parent="PetRunAway"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="runaway_text" type="Label" parent="PetRunAway"]
+layout_mode = 2
+text = "Name was unhappy and ran away!"
+label_settings = SubResource("LabelSettings_d6lk3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="pet sprite" type="AnimatedSprite2D" parent="PetRunAway"]
+position = Vector2(450, 450)
+scale = Vector2(6.47222, 6.47222)
+sprite_frames = SubResource("SpriteFrames_xv7dq")
+animation = &"gryphon"
+metadata/_edit_lock_ = true
+
+[node name="pet_spacer" type="Label" parent="PetRunAway"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+
+[node name="spacer_end" type="Label" parent="PetRunAway"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DayCounter" type="VBoxContainer" parent="."]
+visible = false
+offset_top = 1.0
+offset_right = 900.0
+offset_bottom = 750.0
+theme_override_constants/separation = 0
+
+[node name="spacer_beg" type="Label" parent="DayCounter"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Day" type="Label" parent="DayCounter"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Day"
+label_settings = SubResource("LabelSettings_nxe7j")
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Counter" type="Label" parent="DayCounter"]
+layout_mode = 2
+size_flags_vertical = 6
 text = "1"
 label_settings = SubResource("LabelSettings_1nmeo")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
+[node name="spacer_end" type="Label" parent="DayCounter"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="typewriter" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_s1n70")
+
 [node name="Timer" type="Timer" parent="."]
-autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

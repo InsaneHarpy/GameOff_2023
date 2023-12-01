@@ -66,6 +66,8 @@ var player_inventory = {'foodT1' : 0,
 						'barley' : 0}
 
 # amounts for interacting with animals in animal view
+var pet_runaway_penalty : int = 50
+
 var click_feed_petinc = {'foodT1': 10,
 						'foodT2': 15,
 						'foodT3': 30}

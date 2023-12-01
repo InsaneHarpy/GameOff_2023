@@ -65,6 +65,13 @@ func _process(delta):
 	$"Food Options/Food_T2/Label".text = str(Global.player_inventory['foodT2'])
 	$"Food Options/Food_T3/Label".text = str(Global.player_inventory['foodT3'])
 	
+	# If only one animal then disable left right buttons
+	if len(Global.fullKennels) == 1:
+		$Left_ScreenNav.visible = false
+		$Right_ScreenNav.visible = false
+	elif Global.scene_path != "res://kennel_room/kennel_room.tscn":
+		$Left_ScreenNav.visible = true
+		$Right_ScreenNav.visible = true
 	
 func update_energy(delta):
 	Global.player_energy += delta
