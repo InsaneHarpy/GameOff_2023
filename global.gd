@@ -10,6 +10,7 @@ var fullKennels = [1,2,3]
 var maxKennels : int = 6
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 var fade : bool = false
 
 var current_animals = {1: {'name': 'Spyro',
@@ -34,6 +35,8 @@ var current_animals = {1: {'name': 'Spyro',
 						   'hunger': 10,
 						   'happiness': 0}
 =======
+=======
+>>>>>>> Stashed changes
 var current_animals = {1: {'name': 'Paparino',
 						'type': 'Dragon',
 						'adoptability': 75,
@@ -62,9 +65,12 @@ var current_animals = {1: {'name': 'Paparino',
 						}
 var available_animals = {1: {},
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 						 2: {},
 						 3: {}}
 =======
+=======
+>>>>>>> Stashed changes
 						2: {},
 						3: {}}
 
@@ -82,7 +88,11 @@ var click_feed_petinc : int = 10
 =======
 var click_feed_petinc = {'foodT1': 10,
 						'foodT2': 15,
+<<<<<<< Updated upstream
 						'foodT3': 20}
+=======
+						'foodT3': 30}
+>>>>>>> Stashed changes
 						
 >>>>>>> Stashed changes
 var click_feed_stamdec : int = 10
